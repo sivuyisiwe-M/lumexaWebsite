@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About ZenziCO - AI-Powered Solutions for Modern Businesses</title>
+   
+<link rel="stylesheet" href="/styles/bot.css">
+<link rel="stylesheet" href="/styles/footer.css">
+
+<style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --background: 0 0% 100%;
+            --foreground: 222.2 84% 4.9%;
+            --card: 0 0% 100%;
+            --card-foreground: 222.2 84% 4.9%;
+            --primary: 280 100% 70%;
+            --primary-foreground: 0 0% 100%;
+            --primary-glow: 300 100% 80%;
+            --secondary: 260 50% 50%;
+            --secondary-foreground: 0 0% 100%;
+            --muted: 220 14.3% 95.9%;
+            --muted-foreground: 220 8.9% 46.1%;
+            --accent: 280 100% 95%;
+            --accent-foreground: 280 100% 20%;
+            --border: 214.3 31.8% 91.4%;
+            --radius: 0.5rem;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Utility classes */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .text-center { text-align: center; }
+        .flex { display: flex; }
+        .grid { display: grid; }
+        .hidden { display: none; }
+        .block { display: block; }
+        
+        .items-center { align-items: center; }
+        .items-start { align-items: flex-start; }
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        
+        .flex-col { flex-direction: column; }
+        .flex-shrink-0 { flex-shrink: 0; }
+        
+        .space-x-2 > * + * { margin-left: 0.5rem; }
+        .space-x-3 > * + * { margin-left: 0.75rem; }
+        .space-x-4 > * + * { margin-left: 1rem; }
+        .space-x-6 > * + * { margin-left: 1.5rem; }
+        .space-y-3 > * + * { margin-top: 0.75rem; }
+        .space-y-4 > * + * { margin-top: 1rem; }
+        
+        .gap-4 { gap: 1rem; }
+        .gap-6 { gap: 1.5rem; }
+        .gap-8 { gap: 2rem; }
+        .gap-12 { gap: 3rem; }
+        
+        .grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+        .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+        
+        .w-2 { width: 0.5rem; }
+        .w-5 { width: 1.25rem; }
+        .w-6 { width: 1.5rem; }
+        .w-8 { width: 2rem; }
+        .w-10 { width: 2.5rem; }
+        .w-16 { width: 4rem; }
+        .w-20 { width: 5rem; }
+        .h-2 { height: 0.5rem; }
+        .h-5 { height: 1.25rem; }
+        .h-6 { height: 1.5rem; }
+        .h-8 { height: 2rem; }
+        .h-10 { height: 2.5rem; }
+        .h-16 { height: 4rem; }
+        .h-20 { height: 5rem; }
+        
+        .p-4 { padding: 1rem; }
+        .p-6 { padding: 1.5rem; }
+        .p-8 { padding: 2rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+        .px-8 { padding-left: 2rem; padding-right: 2rem; }
+        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+        .py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+        .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+        .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+        .pt-20 { padding-top: 5rem; }
+        .pb-16 { padding-bottom: 4rem; }
+        
+        .m-2 { margin: 0.5rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-3 { margin-bottom: 0.75rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mb-16 { margin-bottom: 4rem; }
+        .mt-3 { margin-top: 0.75rem; }
+        .mt-12 { margin-top: 3rem; }
+        .ml-2 { margin-left: 0.5rem; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        
+        .max-w-2xl { max-width: 42rem; }
+        .max-w-4xl { max-width: 56rem; }
+        .max-w-6xl { max-width: 72rem; }
+        .max-w-7xl { max-width: 80rem; }
+        
+        .text-lg { font-size: 1.125rem; }
+        .text-xl { font-size: 1.25rem; }
+        .text-2xl { font-size: 1.5rem; }
+        .text-3xl { font-size: 1.875rem; }
+        .text-4xl { font-size: 2.25rem; }
+        .text-5xl { font-size: 3rem; }
+        
+        .font-bold { font-weight: 700; }
+        .font-medium { font-weight: 500; }
+        .font-semibold { font-weight: 600; }
+        
+        .leading-relaxed { line-height: 1.625; }
+        
+        .text-primary { color: hsl(var(--primary)); }
+        .text-muted-foreground { color: hsl(var(--muted-foreground)); }
+        .text-primary-foreground { color: hsl(var(--primary-foreground)); }
+        
+        .bg-primary { background-color: hsl(var(--primary)); }
+        .bg-card { background-color: hsl(var(--card)); }
+        .bg-muted { background-color: hsl(var(--muted)); }
+        
+        .border { border: 1px solid hsl(var(--border)); }
+        .border-0 { border: none; }
+        .rounded-lg { border-radius: 0.5rem; }
+        .rounded-full { border-radius: 9999px; }
+        
+        .shadow-lg { box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); }
+        
+        .transition-all { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .duration-300 { transition-duration: 300ms; }
+        
+        .hover\:shadow-lg:hover { box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); }
+        .hover\:bg-primary\/90:hover { background-color: hsl(var(--primary) / 0.9); }
+        
+        .fixed { position: fixed; }
+        .top-0 { top: 0; }
+        .left-0 { left: 0; }
+        .right-0 { right: 0; }
+        .z-50 { z-index: 50; }
+        
+        /* Custom gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)), hsl(var(--secondary)));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+        
+        /* Custom gradients */
+        .bg-gradient-hero {
+            background: linear-gradient(135deg, 
+                hsl(var(--background)) 0%, 
+                hsl(var(--accent) / 0.2) 50%, 
+                hsl(var(--background)) 100%);
+        }
+        
+        .bg-gradient-card {
+            background: linear-gradient(145deg, 
+                hsl(var(--card)) 0%, 
+                hsl(var(--accent) / 0.1) 100%);
+        }
+        
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, 
+                hsl(var(--primary)) 0%, 
+                hsl(var(--primary-glow)) 100%);
+        }
+        
+        .bg-gradient-solution {
+            background: linear-gradient(145deg, 
+                hsl(var(--primary) / 0.05) 0%, 
+                hsl(var(--primary-glow) / 0.05) 100%);
+        }
+        
+        .bg-accent-light {
+            background-color: hsl(var(--accent) / 0.3);
+        }
+
+        .bg-background-80 {
+            background-color: hsl(var(--background) / 0.8);
+        }
+
+        .backdrop-blur {
+            backdrop-filter: blur(10px);
+        }
+
+        /* Button styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn-lg {
+            padding: 0.75rem 2rem;
+            font-size: 1.125rem;
+        }
+        
+        .btn-primary {
+            background-color: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+        }
+        
+        .btn-primary:hover {
+            background-color: hsl(var(--primary) / 0.9);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: hsl(var(--foreground));
+            border: 1px solid hsl(var(--border));
+        }
+        
+        .btn-outline:hover {
+            background-color: hsl(var(--muted));
+        }
+
+        /* Card styles */
+        .card {
+            background-color: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+        }
+
+        /* Navbar styles */
+/* Navbar Container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Logo Section */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+}
+
+.logo-text h1 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  color: #e75cf6; /* Purple like your screenshot */
+}
+
+.logo-text h1 span {
+  color: #333; /* Make "Co" darker for contrast */
+}
+
+.logo-text p {
+  margin: 0;
+  font-size: 12px;
+  color: #555;
+  letter-spacing: 1px;
+}
+
+/* Navigation Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: #8b5cf6; /* Highlight purple */
+}
+/* Hamburger (hidden on desktop) */
+.hamburger {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 200px;
+    flex-direction: column;
+    background: #fff;
+    padding: 20px;
+    gap: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: none; /* Hidden by default */
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
+        /* Mobile menu styles */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background-color: hsl(var(--background));
+            transition: right 0.3s ease;
+            z-index: 60;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        }
+        
+        .mobile-menu.open {
+            right: 0;
+        }
+        
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 55;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Chatbot styles */
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 20px hsl(var(--primary) / 0.3);
+            z-index: 40;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px hsl(var(--primary) / 0.4);
+        }
+        
+        .chatbot-window {
+            position: fixed;
+            bottom: 6rem;
+            right: 1.5rem;
+            width: 350px;
+            height: 450px;
+            background-color: hsl(var(--card));
+            border-radius: 1rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            z-index: 45;
+            transform: translateY(20px) scale(0.95);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .chatbot-window.open {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Responsive design */
+        @media (min-width: 640px) {
+            .sm\:flex-row { flex-direction: row; }
+            .sm\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+        }
+        
+        @media (min-width: 768px) {
+            .md\:text-4xl { font-size: 2.25rem; }
+            .md\:text-5xl { font-size: 3rem; }
+            .md\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+            .md\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+            .md\:block { display: block; }
+        }
+        
+        @media (min-width: 1024px) {
+            .lg\:px-8 { padding-left: 2rem; padding-right: 2rem; }
+            .lg\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+            .lg\:grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+        }
+        
+        @media (max-width: 767px) {
+            .chatbot-window {
+                width: calc(100% - 2rem);
+                right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+<div class="navbar">
+  <div class="logo">
+    <img src="images/Z.png" alt="ZenziCo Logo">
+    <div class="logo-text">
+      <h1>Zenzi<span>Co</span></h1>
+      <p>AI POWERED SOLUTIONS</p>
+    </div>
+  </div>
+
+    <!-- Hamburger Icon -->
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+  
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="p-6">
+            <div class="flex justify-end mb-6">
+                <button onclick="closeMobileMenu()">
+                    <i data-feather="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <nav class="space-y-4">
+                <a href="#" class="block py-2 text-muted-foreground">Home</a>
+                <a href="#" class="block py-2 text-muted-foreground">Services</a>
+                <a href="#" class="block py-2 text-primary font-medium">About</a>
+                <a href="#" class="block py-2 text-muted-foreground">Contact</a>
+                <a href="#" class="btn btn-primary w-full">Get Started</a>
+            </nav>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="pt-20 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-hero">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">
+                    About ZenziCo
+                </h1>
+                <p class="text-xl text-muted-foreground leading-relaxed">
+                    Empowering businesses through innovative AI solutions
+                </p>
+            </div>
+        </section>
+
+        <!-- Mission Section -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6">Our Mission</h2>
+                        <p class="text-lg text-muted-foreground mb-6 leading-relaxed">
+                            ZenziCO aims to revolutionize customer engagement in South Africa by providing AI-driven 
+                            chatbot solutions. Our focus is on enhancing customer service efficiency across various 
+                            industries, including banking, retail, fuel, and fashion.
+                        </p>
+                        <p class="text-lg text-muted-foreground leading-relaxed">
+                            By integrating chatbots, we address the prevalent issues of outdated information, 
+                            limited accessibility, and inefficient customer service channels that many South African 
+                            companies struggle with.
+                        </p>
+                    </div>
+                    <div class="card p-8 bg-gradient-solution border border-primary/20">
+                        <h3 class="text-2xl font-bold mb-4 text-primary">What We Believe</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0"></div>
+                                <span>Technology should be accessible to businesses of all sizes</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0"></div>
+                                <span>AI can solve real-world business challenges</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0"></div>
+                                <span>Local insights drive better solutions</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0"></div>
+                                <span>Customer success is our success</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Founders Section -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8 bg-accent-light">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Meet Our Founders</h2>
+                    <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+                        Three passionate South African women bringing unique perspectives to address local business challenges.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                    <div class="card p-8 text-center hover:shadow-lg transition-all duration-300 bg-background-80 backdrop-blur">
+                        <img src="/images/partners/chumasande.jpg" 
+                            alt="Chumasande Mooi" 
+                            class="w-20 h-20 rounded-full object-cover mx-auto mb-6">
+                        <h3 class="text-2xl font-bold mb-2">Chumasande Mooi</h3>
+                        <p class="text-primary font-medium mb-4">Co-Founder & AI Specialist</p>
+                        <p class="text-muted-foreground leading-relaxed">
+                        Passionate about creating intelligent solutions that make a real difference in business operations. 
+                        From streamlining workflows with AI-powered automation to building user-friendly digital platforms, 
+                        we focus on delivering technology that drives efficiency, innovation, and growth. 
+                        Our goal is to empower businesses with smart tools that not only solve today’s challenges 
+                        but also unlock new opportunities for the future.
+                        </p>
+
+                    </div>
+
+                    <div class="card p-8 text-center hover:shadow-lg transition-all duration-300 bg-background-80 backdrop-blur">
+                    <img src="/images/partners/sivu.jpg" 
+                        alt="Chumasande Mooi" 
+                        class="w-20 h-20 rounded-full object-cover mx-auto mb-6">
+                    <h3 class="text-2xl font-bold mb-2">Sivuyisiwe Mgijima</h3>
+                    <p class="text-primary font-medium mb-4">Co-Founder & AI Specialist</p>
+                    <p class="text-muted-foreground leading-relaxed">
+                            Sivuyisiwe combines expertise in <strong>AI development</strong> and 
+                            <strong>software engineering</strong> with creativity, delivering 
+                            <strong>intelligent digital solutions</strong> that are both functional and innovative. 
+                            With a strong foundation in problem-solving and a passion for exploring emerging technologies, 
+                            Sivuyisiwe focuses on building systems that enhance efficiency, adaptability, and user experience. 
+                            </p>
+
+                </div>
+
+
+                <div class="card p-8 text-center hover:shadow-lg transition-all duration-300 bg-background-80 backdrop-blur">
+                    <img src="/images/partners/ziyanda.jpg" 
+                        alt="Ziyanda Tom" 
+                        class="w-20 h-20 rounded-full object-cover mx-auto mb-6">
+                    <h3 class="text-2xl font-bold mb-2">Ziyanda Tom</h3>
+                    <p class="text-primary font-medium mb-4">Co-Founder & AI Specialist</p>
+                    <p class="text-muted-foreground leading-relaxed">
+                    Ziyanda focuses on building <strong>scalable and user-friendly applications</strong> 
+                    that make technology accessible for everyone. 
+                    With a strong emphasis on clean design, reliable performance, and seamless integration, 
+                    she is dedicated to crafting digital solutions that empower both businesses and individuals. 
+                    Her approach combines technical expertise with a deep understanding of user needs, 
+                    ensuring every application not only functions flawlessly but also delivers real value 
+                    and a meaningful experience.
+                    </p>
+
+
+                </div>
+
+                    
+
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Values</h2>
+                    <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+                        The principles that guide everything we do at ZenziCo.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-primary rounded-lg flex items-center justify-center mx-auto mb-6">
+                            <i data-lucide="target" class="w-8 h-8 text-primary-foreground"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Innovation</h3>
+                        <p class="text-muted-foreground leading-relaxed">We stay at the forefront of AI technology to deliver cutting-edge solutions.</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-primary rounded-lg flex items-center justify-center mx-auto mb-6">
+                            <i data-lucide="heart" class="w-8 h-8 text-primary-foreground"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Community Focus</h3>
+                        <p class="text-muted-foreground leading-relaxed">Committed to uplifting underserved communities through accessible technology.</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-primary rounded-lg flex items-center justify-center mx-auto mb-6">
+                            <i data-lucide="users" class="w-8 h-8 text-primary-foreground"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Customer-Centric</h3>
+                        <p class="text-muted-foreground leading-relaxed">Every solution is tailored to meet specific business needs and challenges.</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-primary rounded-lg flex items-center justify-center mx-auto mb-6">
+                            <i data-lucide="award" class="w-8 h-8 text-primary-foreground"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Excellence</h3>
+                        <p class="text-muted-foreground leading-relaxed">We maintain the highest standards in development and customer service.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Competitive Advantage Section -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8 bg-accent-light">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Our Competitive Advantage</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                    <div class="card p-6">
+                        <h3 class="text-xl font-bold mb-4 text-primary">Founders' Insight</h3>
+                        <p class="text-muted-foreground">
+                            As South African women, we bring unique perspectives to address local challenges and understand the market intimately.
+                        </p>
+                    </div>
+                    <div class="card p-6">
+                        <h3 class="text-xl font-bold mb-4 text-primary">Customized Solutions</h3>
+                        <p class="text-muted-foreground">
+                            Every solution is tailored to meet specific business needs, ensuring maximum impact and value.
+                        </p>
+                    </div>
+                    <div class="card p-6">
+                        <h3 class="text-xl font-bold mb-4 text-primary">Community Focus</h3>
+                        <p class="text-muted-foreground">
+                            Committed to uplifting underserved communities through accessible and affordable technology.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<!-- Chatbot -->
+<div id="chatbot">
+  <!-- Floating Button -->
+<!-- Floating Button -->
+<button class="chatbot-toggle" onclick="toggleChatbot()">
+  <!-- Lucide icon -->
+  <i data-lucide="message-circle"></i>
+</button>
+
+
+  <!-- Chat Window -->
+  <div class="chatbot-window" id="chatbotWindow">
+    <div class="chatbot-header">
+      <div class="chatbot-title">
+        <span>ZenziCO Assistant</span>
+      </div>
+      <button onclick="closeChatbot()" class="chatbot-close">✖</button>
+    </div>
+
+    <div class="chatbot-body" id="chatMessages">
+      <div class="bot-message">
+        Hello! I'm the ZenziCO AI assistant. How can I help you today?
+      </div>
+    </div>
+
+    <div class="chatbot-footer">
+      <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="handleChatKeyPress(event)">
+      <button onclick="sendMessage()">➤</button>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Footer -->
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Logo & About -->
+    <div class="footer-section">
+      <h2 class="logo"><span>Zenzi</span>Co</h2>
+      <p class="tagline">AI POWERED SOLUTIONS</p>
+      <p>
+        Empowering businesses through innovative AI solutions,
+        custom chatbots, and modern web development.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Services -->
+    <div class="footer-section">
+      <h3>Services</h3>
+      <ul>
+        <li><a href="#">AI Chatbots</a></li>
+        <li><a href="#">Website Development</a></li>
+        <li><a href="#">Mobile Applications</a></li>
+        <li><a href="#">Digital Solutions</a></li>
+      </ul>
+    </div>
+
+    <!-- Get in Touch -->
+    <div class="footer-section">
+      <h3>Get in Touch</h3>
+      <ul>
+        <li>📞 +27 62 595 4493</li>
+       <li>📞 +27 62 883 6189</li>
+       <li>📞 +27 65 293 9819</li>
+        <li>📧 <a href="mailto:zenzelecollab@gmail.com">zenzelecollab@gmail.com</a></li>
+        <li>🌐 <a href="#">www.ZenziCo.com</a></li>
+        <li>📍 Cape Town, Western Cape</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Bottom -->
+  <div class="footer-bottom">
+    <p>© 2024 ZenziCo. All rights reserved. | Empowering businesses through innovative AI solutions.</p>
+  </div>
+</footer>
+
+
+    </main>
+
+    
+    <script>
+function toggleMenu() {
+  document.querySelector('.nav-links').classList.toggle('show');
+}
+</script>
+
+    <script>
+
+
+        // Mobile menu functions
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileOverlay');
+            menu.classList.toggle('open');
+            overlay.classList.toggle('open');
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileOverlay');
+            menu.classList.remove('open');
+            overlay.classList.remove('open');
+        }
+
+        // Chatbot functions
+        function toggleChatbot() {
+            const window = document.getElementById('chatbotWindow');
+            window.classList.toggle('open');
+        }
+
+        function closeChatbot() {
+            const window = document.getElementById('chatbotWindow');
+            window.classList.remove('open');
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                addMessage(message, 'user');
+                input.value = '';
+                
+                // Simulate AI response
+                setTimeout(() => {
+                    const responses = [
+                        "Thank you for your message! I'd be happy to help you learn more about our AI solutions.",
+                        "That's a great question! Our team can provide you with detailed information about our services.",
+                        "I'll connect you with one of our specialists who can assist you further.",
+                        "Would you like to schedule a consultation to discuss your specific needs?"
+                    ];
+                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                    addMessage(randomResponse, 'bot');
+                }, 1000);
+            }
+        }
+
+        function addMessage(message, sender) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'mb-4';
+            
+            if (sender === 'user') {
+                messageDiv.innerHTML = `
+                    <div class="flex justify-end">
+                        <div class="bg-primary text-primary-foreground p-3 rounded-lg max-w-xs">
+                            <p class="text-sm">${message}</p>
+                        </div>
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="bg-muted p-3 rounded-lg max-w-xs">
+                        <p class="text-sm">${message}</p>
+                    </div>
+                `;
+            }
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function handleChatKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add smooth scrolling behavior
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add animation on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for animation
+            const animateElements = document.querySelectorAll('.card, .text-center > h1, .text-center > h2');
+            animateElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('mobileMenu');
+            const menuButton = event.target.closest('[onclick="toggleMobileMenu()"]');
+            const isClickInsideMenu = menu.contains(event.target);
+            
+            if (!menuButton && !isClickInsideMenu && menu.classList.contains('open')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Close chatbot when clicking outside
+        document.addEventListener('click', function(event) {
+            const chatbot = document.getElementById('chatbot');
+            const chatbotWindow = document.getElementById('chatbotWindow');
+            const chatbotToggle = event.target.closest('.chatbot-toggle');
+            const isClickInsideChatbot = chatbot.contains(event.target);
+            
+            if (!chatbotToggle && !isClickInsideChatbot && chatbotWindow.classList.contains('open')) {
+                closeChatbot();
+            }
+        });
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+<script>
+  lucide.createIcons();
+</script>
+
+    <script src="/scripts/bot.js"></script>
+</body>
+</html>

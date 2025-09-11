@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - Web Design & Development Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="/styles/bot.css">
+<link rel="stylesheet" href="/styles/footer.css">
+   <style>
+        :root {
+            --background: 0 0% 100%;
+            --foreground: 222.2 84% 4.9%;
+            --card: 0 0% 100%;
+            --card-foreground: 222.2 84% 4.9%;
+            --primary: 280 100% 70%;
+            --primary-foreground: 0 0% 100%;
+            --primary-glow: 300 100% 80%;
+            --secondary: 260 50% 50%;
+            --secondary-foreground: 0 0% 100%;
+            --muted: 220 14.3% 95.9%;
+            --muted-foreground: 220 8.9% 46.1%;
+            --accent: 280 100% 95%;
+            --accent-foreground: 280 100% 20%;
+            --border: 214.3 31.8% 91.4%;
+            --radius: 0.5rem;
+            --gradient-primary: linear-gradient(135deg, hsl(280 100% 70%), hsl(300 100% 80%));
+            --gradient-hero: linear-gradient(135deg, hsl(280 100% 70%) 0%, hsl(300 100% 80%) 50%, hsl(320 100% 85%) 100%);
+            --shadow-glow: 0 0 40px hsl(280 100% 70% / 0.3);
+            --shadow-card: 0 10px 30px -10px hsl(280 100% 70% / 0.1);
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        .bg-primary { background-color: hsl(var(--primary)); }
+        .text-primary { color: hsl(var(--primary)); }
+        .text-primary-foreground { color: hsl(var(--primary-foreground)); }
+        .bg-accent { background-color: hsl(var(--accent)); }
+        .text-accent-foreground { color: hsl(var(--accent-foreground)); }
+        .text-muted-foreground { color: hsl(var(--muted-foreground)); }
+        .border-primary { border-color: hsl(var(--primary)); }
+        .bg-secondary { background-color: hsl(var(--secondary)); }
+        .text-secondary-foreground { color: hsl(var(--secondary-foreground)); }
+
+        .gradient-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-bg {
+            background: var(--gradient-hero);
+        }
+
+        .card {
+            background-color: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+            border-radius: calc(var(--radius) * 2);
+            box-shadow: var(--shadow-card);
+            transition: var(--transition-smooth);
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-glow);
+            transform: translateY(-4px);
+        }
+
+        .popular-card {
+            border-color: hsl(var(--primary));
+            box-shadow: var(--shadow-glow);
+            transform: scale(1.05);
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 500;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+        }
+
+        .btn-primary:hover {
+            background-color: hsl(var(--primary) / 0.9);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid hsl(var(--primary));
+            color: hsl(var(--primary));
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+        }
+
+        /* Navbar Container */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* Logo Section */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo-text h1 {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+            color: #e75cf6;
+        }
+
+        .logo-text h1 span {
+            color: #333;
+        }
+
+        .logo-text p {
+            margin: 0;
+            font-size: 12px;
+            color: #555;
+            letter-spacing: 1px;
+        }
+
+        /* Navigation Links */
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            color: #555;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: #8b5cf6;
+        }
+
+        /* Hamburger (hidden on desktop) */
+        .hamburger {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        /* Filter Button Styles */
+        .filter-container {
+            margin-bottom: 2rem;
+        }
+
+        .filter-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: white;
+            border: 2px solid hsl(var(--border));
+            border-radius: calc(var(--radius) * 2);
+            font-weight: 500;
+            color: hsl(var(--muted-foreground));
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+        }
+
+        .filter-button:hover {
+            border-color: hsl(var(--primary));
+            color: hsl(var(--primary));
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px hsl(var(--primary) / 0.1);
+        }
+
+        .filter-button.active {
+            background: var(--gradient-primary);
+            border-color: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+            box-shadow: var(--shadow-glow);
+        }
+
+        .filter-button span {
+            font-size: 1.2rem;
+        }
+
+        /* Service Section Animation */
+        .service-section {
+            transition: all 0.5s ease;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-section.hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            height: 0;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        @media (max-width: 640px) {
+            .filter-button {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+            }
+            
+            .filter-button span {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .popular-card {
+                transform: none;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                right: 0;
+                width: 200px;
+                flex-direction: column;
+                background: #fff;
+                padding: 20px;
+                gap: 15px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                display: none;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+        .check-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: hsl(var(--primary));
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient-primary);
+            color: hsl(var(--primary-foreground));
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .star-icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        .process-step {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.875rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="images/Z.png" alt="ZenziCo Logo">
+            <div class="logo-text">
+                <h1>Zenzi<span>Co</span></h1>
+                <p>AI POWERED SOLUTIONS</p>
+            </div>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="pricing.html" class="active">Pricing</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg pt-32 pb-20 px-6 text-center text-white">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                Transparent Pricing
+            </h1>
+            <p class="text-xl leading-relaxed opacity-90">
+                Choose the perfect package for your business needs. All prices are upfront with no hidden fees.
+            </p>
+        </div>
+    </section>
+
+    <!-- Filter Buttons -->
+    <section class="py-12 px-6">
+        <div class="max-w-4xl mx-auto text-center mb-8">
+            <div class="filter-container">
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button class="filter-button active" onclick="filterServices('all')" data-filter="all">
+                        <span>🎯</span>
+                        All Services
+                    </button>
+                    <button class="filter-button" onclick="filterServices('website')" data-filter="website">
+                        <span>🌐</span>
+                        Website Development
+                    </button>
+                    <button class="filter-button" onclick="filterServices('chatbot')" data-filter="chatbot">
+                        <span>🤖</span>
+                        AI Chatbots
+                    </button>
+                    <button class="filter-button" onclick="filterServices('mobile')" data-filter="mobile">
+                        <span>📱</span>
+                        Mobile Apps
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Website Packages -->
+    <section class="service-section py-20 px-6" data-category="website">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Website Design Packages</h2>
+                <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+                    Professional websites that grow with your business
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Starter Package -->
+                <div class="card p-8 relative">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-2">Starter Package</h3>
+                        <div class="text-4xl font-bold text-primary mb-2">R2,500</div>
+                        <p class="text-muted-foreground text-sm mb-4">One-time</p>
+                        <p class="text-muted-foreground">Perfect for small businesses getting started online</p>
+                    </div>
+
+                    <div class="mb-8">
+                        <p class="font-semibold mb-4 text-primary">Includes: Home + Contact page</p>
+                        <ul class="feature-list">
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <span class="text-sm">One-page responsive website</span>
+                            </li>
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <span class="text-sm">Mobile-friendly design</span>
+                            </li>
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <span class="text-sm">Basic contact form</span>
+                            </li>
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <span class="text-sm">Social media links</span>
+                            </li>
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <span class="text-sm">1 week turnaround</span>
+                            </li>
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <span class="text-sm">Basic SEO optimization</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="#contact" class="btn btn-outline w-full">
+                        Choose Starter
+                    </a>
+                </div>
+
+                <!-- Standard Business (Popular) -->
+                <div class="card p-8 relative popular-card">
+                    <div class="popular-badge">
+                        <span class="star-icon">⭐</span>
+                        <span>Most Popular</span>
+                    </div>
+                    
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-2">Standard Business</h3>
+                        <div class="text-4xl font-bold text-primary mb-2">R6,500</div>
+                        <p class="text-muted-foreground text-sm mb-4">One-time</p>
+                        <p class="text-muted-foreground">Ideal for established businesses wanting a professional presence</p>
+                    </div>
+
+                    <div class="mb-8">
+                        <p class="font-semibold mb-4 text-primary">Includes: Home, About, Services, Contact, Gallery</p>
+                        <ul class="feature-list">
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <span class="text-sm">Up to 5 pages</span>
+                            </li>
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <span class="text-sm">Mobile-optimized design</span>
+                            </li>
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <span class="text-sm">SEO-ready (meta titles, descriptions)</span>
+                            </li>
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <span class="text-sm">Contact form + Google Map integration</span>
+                            </li>
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <span class="text-sm">Basic CMS (optional WordPress)</span>
+                            </li>
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <span class="text-sm">2–3 week turnaround</span>
+                            </li>
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <span class="text-sm">Professional design templates</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="#contact" class="btn btn-primary w-full">
+                        Choose Standard
+                    </a>
+                </div>
+
+                <!-- Premium Package -->
+                <div class="card p-8 relative">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-2">Premium Package</h3>
+                        <div class="text-4xl font-bold text-primary mb-2">R12,000+</div>
+                        <p class="text-muted-foreground text-sm mb-4">One-time</p>
+                        <p class="text-muted-foreground">Complete solution for businesses ready to sell online</p>
+                    </div>
+
+                    <div class="mb-8">
+                        <p class="font-semibold mb-4 text-primary">Includes: Everything + E-commerce functionality</p>
+                        <ul class="feature-list">
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <span class="text-sm">Up to 10 custom pages</span>
+                            </li>
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <span class="text-sm">Full e-commerce integration</span>
+                            </li>
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <span class="text-sm">Product uploads (up to 20 products)</span>
+                            </li>
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <span class="text-sm">Payment gateway setup (PayFast/Stripe/PayPal)</span>
+                            </li>
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <span class="text-sm">Blog setup + user guide</span>
+                            </li>
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <span class="text-sm">3–5 week turnaround</span>
+                            </li>
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <span class="text-sm">Advanced customization</span>
+                            </li>
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <span class="text-sm">Training and documentation</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="#contact" class="btn btn-outline w-full">
+                        Choose Premium
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot Packages -->
+    <section class="service-section py-20 px-6 bg-accent" data-category="chatbot">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">AI Chatbot Development</h2>
+                <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+                    Intelligent chatbots that provide 24/7 customer support and boost engagement
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Basic Chatbot -->
+                <div class="card p-8">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-2">Basic Chatbot</h3>
+                        <div class="text-4xl font-bold text-primary mb-2">R8,500</div>
+                        <p class="text-muted-foreground text-sm mb-4">One-time + R500/month hosting</p>
+                        <p class="text-muted-foreground">Simple FAQ bot for common customer queries</p>
+                    </div>
+
+                    <ul class="feature-list mb-8">
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Appointment booking system</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Multi-language support (3 languages)</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Advanced analytics & reporting</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">3-4 weeks delivery</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Training & documentation</span>
+                        </li>
+                    </ul>
+
+                    <a href="#contact" class="btn btn-primary w-full">
+                        Choose Smart Bot
+                    </a>
+                </div>
+
+                <!-- standard Chatbot -->
+                <div class="card p-8">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-2">Smart Chatbot</h3>
+                        <div class="text-4xl font-bold text-primary mb-2">R12,000+</div>
+                        <p class="text-muted-foreground text-sm mb-4">Custom pricing + hosting</p>
+                        <p class="text-muted-foreground">Custom AI solution with advanced integrations</p>
+                    </div>
+
+                    <ul class="feature-list mb-8">
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Advanced NLP & conversation flow</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Multi-platform deployment</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">CRM integration (HubSpot, Salesforce)</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Appointment booking system</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Multi-language support (3 languages)</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Advanced analytics & reporting</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Training & documentation</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Dedicated support & training</span>
+                        </li>
+                    </ul>
+
+                    <a href="#contact" class="btn btn-outline w-full">
+                        Get Custom Quote
+                    </a>
+                </div>
+
+                <!-- Enterprise Chatbot -->
+                <div class="card p-8">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-2">Enterprise Chatbot</h3>
+                        <div class="text-4xl font-bold text-primary mb-2">R35,000+</div>
+                        <p class="text-muted-foreground text-sm mb-4">Custom pricing + hosting</p>
+                        <p class="text-muted-foreground">Custom AI solution with advanced integrations</p>
+                    </div>
+
+                    <ul class="feature-list mb-8">
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Custom AI model training</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Voice & text capabilities</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Enterprise system integrations</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Custom dashboard & admin panel</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Advanced security & compliance</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Unlimited languages</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">6-8 weeks delivery</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Dedicated support & training</span>
+                        </li>
+                    </ul>
+
+                    <a href="#contact" class="btn btn-outline w-full">
+                        Get Custom Quote
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile App Packages -->
+    <section class="service-section py-20 px-6" data-category="mobile">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Mobile App Development</h2>
+                <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+                    Native and cross-platform mobile applications for iOS and Android
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Basic App -->
+                <div class="card p-8">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-2">Basic App</h3>
+                        <div class="text-4xl font-bold text-primary mb-2">R25,000</div>
+                        <p class="text-muted-foreground text-sm mb-4">One-time</p>
+                        <p class="text-muted-foreground">Simple app with core functionality</p>
+                    </div>
+
+                    <ul class="feature-list mb-8">
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">React Native (iOS + Android)</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Up to 5 screens/pages</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Basic UI/UX design</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">User authentication</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Basic database integration</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">App store submission</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">4-6 weeks delivery</span>
+                        </li>
+                    </ul>
+
+                    <a href="#contact" class="btn btn-outline w-full">
+                        Choose Basic App
+                    </a>
+                </div>
+
+                <!-- Business App -->
+                <div class="card p-8 popular-card">
+                    <div class="popular-badge">
+                        <span class="star-icon">⭐</span>
+                        <span>Most Popular</span>
+                    </div>
+
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-2">Business App</h3>
+                        <div class="text-4xl font-bold text-primary mb-2">R45,000</div>
+                        <p class="text-muted-foreground text-sm mb-4">One-time</p>
+                        <p class="text-muted-foreground">Feature-rich app with advanced functionality</p>
+                    </div>
+
+                    <ul class="feature-list mb-8">
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">React Native (iOS + Android)</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Up to 15 screens/pages</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Custom UI/UX design</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Advanced user management</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">API integrations</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Push notifications</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Payment integration</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Analytics dashboard</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">App store optimization</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">6-8 weeks delivery</span>
+                        </li>
+                    </ul>
+
+                    <a href="#contact" class="btn btn-primary w-full">
+                        Choose Business App
+                    </a>
+                </div>
+
+                <!-- Enterprise App -->
+                <div class="card p-8">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-2">Enterprise App</h3>
+                        <div class="text-4xl font-bold text-primary mb-2">R80,000+</div>
+                        <p class="text-muted-foreground text-sm mb-4">Custom pricing</p>
+                        <p class="text-muted-foreground">Complex app with enterprise-grade features</p>
+                    </div>
+
+                    <ul class="feature-list mb-8">
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Native iOS & Android (or React Native)</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Unlimited screens & features</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Premium UI/UX design</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Advanced security features</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Real-time data synchronization</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Offline functionality</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Multi-language support</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Admin dashboard</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">10-16 weeks delivery</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Dedicated project manager</span>
+                        </li>
+                    </ul>
+
+                    <a href="#contact" class="btn btn-outline w-full">
+                        Get Custom Quote
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add-ons -->
+    <section class="service-section py-20 px-6 bg-accent" data-category="all">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Add-On Services</h2>
+                <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+                    Enhance your digital presence with additional features and ongoing support
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Monthly Maintenance -->
+                <div class="card p-6 text-center">
+                    <h3 class="text-xl font-bold mb-2">Monthly Maintenance Plan</h3>
+                    <div class="text-2xl font-bold text-primary mb-3">R800/month</div>
+                    <p class="text-muted-foreground text-sm mb-4">Keep your website updated and secure</p>
+                    <ul class="feature-list text-left">
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Security updates</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Content updates</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Performance monitoring</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Backup management</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span class="text-sm">Technical support</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Extra Pages -->
+                <div class="card p-6 text-center">
+                    <h3 class="text-xl font-bold mb-2">Extra Pages</h3>
+                    <div class="text-2xl font-bold text-primary mb-3">R500/page</div>
+                    <p class="text-muted-foreground text-sm mb-4">Add additional pages to your website</p>
+                </div>
+
+                <!-- Logo Design -->
+                <div class="card p-6 text-center">
+                    <h3 class="text-xl font-bold mb-2">Logo Design</h3>
+                    <div class="text-2xl font-bold text-primary mb-3">R1,000</div>
+                    <p class="text-muted-foreground text-sm mb-4">Professional logo design for your brand</p>
+                </div>
+
+                <!-- Domain & Hosting -->
+                <div class="card p-6 text-center">
+                    <h3 class="text-xl font-bold mb-2">Domain & Hosting Setup</h3>
+                    <div class="text-2xl font-bold text-primary mb-3">R750</div>
+                    <p class="text-muted-foreground text-sm mb-4">Complete domain registration and hosting configuration</p>
+                </div>
+
+                <!-- SEO Package -->
+                <div class="card p-6 text-center">
+                    <h3 class="text-xl font-bold mb-2">SEO Optimization</h3>
+                    <div class="text-2xl font-bold text-primary mb-3">R3,500</div>
+                    <p class="text-muted-foreground text-sm mb-4">Comprehensive SEO audit and optimization</p>
+                </div>
+
+                <!-- Social Media Setup -->
+                <div class="card p-6 text-center">
+                    <h3 class="text-xl font-bold mb-2">Social Media Setup</h3>
+                    <div class="text-2xl font-bold text-primary mb-3">R1,500</div>
+                    <p class="text-muted-foreground text-sm mb-4">Professional social media profiles and integration</p>
+                </div>
+
+                <!-- E-commerce Training -->
+                <div class="card p-6 text-center">
+                    <h3 class="text-xl font-bold mb-2">E-commerce Training</h3>
+                    <div class="text-2xl font-bold text-primary mb-3">R2,000</div>
+                    <p class="text-muted-foreground text-sm mb-4">Learn to manage your online store effectively</p>
+                </div>
+
+                <!-- App Store Optimization -->
+                <div class="card p-6 text-center">
+                    <h3 class="text-xl font-bold mb-2">App Store Optimization</h3>
+                    <div class="text-2xl font-bold text-primary mb-3">R2,500</div>
+                    <p class="text-muted-foreground text-sm mb-4">Optimize your app for better visibility and downloads</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Terms -->
+    <section class="service-section py-20 px-6" data-category="all">
+        <div class="max-w-4xl mx-auto">
+            <div class="card p-8">
+                <h2 class="text-3xl font-bold text-center mb-8">Payment Terms & Process</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-primary">Payment Structure</h3>
+                        <ul class="feature-list">
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <span>50% upfront to start the project</span>
+                            </li>
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <span>50% upon final delivery and approval</span>
+                            </li>
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <span>No hidden fees or surprise costs</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-primary">Our Process</h3>
+                        <ol class="space-y-3">
+                            <li class="flex items-start space-x-3">
+                                <span class="process-step">1</span>
+                                <span>Client approves proposal</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <span class="process-step">2</span>
+                                <span>Initial invoice sent and deposit paid</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <span class="process-step">3</span>
+                                <span>Work begins immediately</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <span class="process-step">4</span>
+                                <span>Final delivery and payment</span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="service-section py-20 px-6 bg-accent" data-category="all">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Service Comparison</h2>
+                <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+                    Compare our different service offerings to find the perfect fit
+                </p>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full card">
+                    <thead class="bg-primary text-primary-foreground">
+                        <tr>
+                            <th class="p-4 text-left">Feature</th>
+                            <th class="p-4 text-center">Website</th>
+                            <th class="p-4 text-center">Chatbot</th>
+                            <th class="p-4 text-center">Mobile App</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b">
+                            <td class="p-4 font-medium">Starting Price</td>
+                            <td class="p-4 text-center">R2,500</td>
+                            <td class="p-4 text-center">R8,500</td>
+                            <td class="p-4 text-center">R25,000</td>
+                        </tr>
+                        <tr class="border-b bg-accent">
+                            <td class="p-4 font-medium">Development Time</td>
+                            <td class="p-4 text-center">1-5 weeks</td>
+                            <td class="p-4 text-center">2-8 weeks</td>
+                            <td class="p-4 text-center">4-16 weeks</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="p-4 font-medium">Ongoing Costs</td>
+                            <td class="p-4 text-center">R800/month (optional)</td>
+                            <td class="p-4 text-center">R500-800/month</td>
+                            <td class="p-4 text-center">App store fees</td>
+                        </tr>
+                        <tr class="border-b bg-accent">
+                            <td class="p-4 font-medium">Customer Support</td>
+                            <td class="p-4 text-center">Static content</td>
+                            <td class="p-4 text-center">24/7 automated</td>
+                            <td class="p-4 text-center">Push notifications</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="p-4 font-medium">Platform Reach</td>
+                            <td class="p-4 text-center">Web browsers</td>
+                            <td class="p-4 text-center">Web + WhatsApp</td>
+                            <td class="p-4 text-center">iOS + Android</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="service-section py-20 px-6" data-category="all">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-6">Ready to Get Started?</h2>
+            <p class="text-xl text-muted-foreground mb-8">
+                Final pricing may vary depending on specific client requirements. Contact us for a detailed quote.
+            </p>
+            <div class="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center">
+                <a href="mailto:zenzelecollab@gmail.com" class="btn btn-primary text-lg px-8">
+                    Get Your Custom Quote
+                </a>
+                <a href="tel:+27625954493" class="btn btn-outline text-lg px-8">
+                    Call Us Now
+                </a>
+            </div>
+            
+            <!-- Contact Info -->
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div>
+                    <div class="w-12 h-12 bg-primary text-primary-foreground rounded-lg flex items-center justify-center mx-auto mb-4">
+                        📧
+                    </div>
+                    <h3 class="font-bold mb-2">Email Us</h3>
+                    <p class="text-muted-foreground">zenzelecollab@gmail.com</p>
+                </div>
+                <div>
+                    <div class="w-12 h-12 bg-primary text-primary-foreground rounded-lg flex items-center justify-center mx-auto mb-4">
+                        📱
+                    </div>
+                    <h3 class="font-bold mb-2">Call Us</h3>
+                    <p class="text-muted-foreground">+27 62 595 4493</p>
+                </div>
+                <div>
+                    <div class="w-12 h-12 bg-primary text-primary-foreground rounded-lg flex items-center justify-center mx-auto mb-4">
+                        💬
+                    </div>
+                    <h3 class="font-bold mb-2">WhatsApp</h3>
+                    <p class="text-muted-foreground">+27 62 883 6189</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Chatbot -->
+<div id="chatbot">
+  <!-- Floating Button -->
+<!-- Floating Button -->
+<button class="chatbot-toggle" onclick="toggleChatbot()">
+  <!-- Lucide icon -->
+  <i data-lucide="message-circle"></i>
+</button>
+
+
+  <!-- Chat Window -->
+  <div class="chatbot-window" id="chatbotWindow">
+    <div class="chatbot-header">
+      <div class="chatbot-title">
+        <span>ZenziCO Assistant</span>
+      </div>
+      <button onclick="closeChatbot()" class="chatbot-close">✖</button>
+    </div>
+
+    <div class="chatbot-body" id="chatMessages">
+      <div class="bot-message">
+        Hello! I'm the ZenziCO AI assistant. How can I help you today?
+      </div>
+    </div>
+
+    <div class="chatbot-footer">
+      <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="handleChatKeyPress(event)">
+      <button onclick="sendMessage()">➤</button>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Logo & About -->
+    <div class="footer-section">
+      <h2 class="logo"><span>Zenzi</span>Co</h2>
+      <p class="tagline">AI POWERED SOLUTIONS</p>
+      <p>
+        Empowering businesses through innovative AI solutions,
+        custom chatbots, and modern web development.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Services -->
+    <div class="footer-section">
+      <h3>Services</h3>
+      <ul>
+        <li><a href="#">AI Chatbots</a></li>
+        <li><a href="#">Website Development</a></li>
+        <li><a href="#">Mobile Applications</a></li>
+        <li><a href="#">Digital Solutions</a></li>
+      </ul>
+    </div>
+
+    <!-- Get in Touch -->
+    <div class="footer-section">
+      <h3>Get in Touch</h3>
+      <ul>
+        <li>📞 +27 62 595 4493</li>
+       <li>📞 +27 62 883 6189</li>
+       <li>📞 +27 65 293 9819</li>
+        <li>📧 <a href="mailto:zenzelecollab@gmail.com">zenzelecollab@gmail.com</a></li>
+        <li>🌐 <a href="#">www.ZenziCo.com</a></li>
+        <li>📍 Cape Town, Western Cape</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Bottom -->
+  <div class="footer-bottom">
+    <p>© 2024 ZenziCo. All rights reserved. | Empowering businesses through innovative AI solutions.</p>
+  </div>
+</footer>
+
+    <script>
+        // Filter Services Function
+        function filterServices(category) {
+            // Get all service sections
+            const serviceSections = document.querySelectorAll('.service-section');
+            const filterButtons = document.querySelectorAll('.filter-button');
+            
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            const activeButton = document.querySelector(`[data-filter="${category}"]`);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+            
+            // Show/hide sections based on category
+            serviceSections.forEach(section => {
+                const sectionCategory = section.getAttribute('data-category');
+                
+                if (category === 'all' || sectionCategory === category || sectionCategory === 'all') {
+                    section.classList.remove('hidden');
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+        }
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('show');
+        }
+
+        // Chatbot functions
+        function toggleChatbot() {
+            const chatbotWindow = document.getElementById('chatbotWindow');
+            chatbotWindow.classList.toggle('open');
+        }
+
+        function closeChatbot() {
+            const chatbotWindow = document.getElementById('chatbotWindow');
+            chatbotWindow.classList.remove('open');
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                addMessage(message, 'user');
+                input.value = '';
+                
+                // Simulate AI response
+                setTimeout(() => {
+                    const responses = [
+                        "Thank you for your message! I'd be happy to help you learn more about our AI solutions.",
+                        "That's a great question! Our team can provide you with detailed information about our services.",
+                        "I'll connect you with one of our specialists who can assist you further.",
+                        "Would you like to schedule a consultation to discuss your specific needs?"
+                    ];
+                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                    addMessage(randomResponse, 'bot');
+                }, 1000);
+            }
+        }
+
+        function addMessage(message, sender) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            
+            if (sender === 'user') {
+                messageDiv.className = 'user-message';
+                messageDiv.textContent = message;
+            } else {
+                messageDiv.className = 'bot-message';
+                messageDiv.textContent = message;
+            }
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function handleChatKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // Initialize Lucide icons when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+    </script>
+
+   
+
+    <script>
+
+
+        // Mobile menu functions
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileOverlay');
+            menu.classList.toggle('open');
+            overlay.classList.toggle('open');
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileOverlay');
+            menu.classList.remove('open');
+            overlay.classList.remove('open');
+        }
+
+        // Chatbot functions
+        function toggleChatbot() {
+            const window = document.getElementById('chatbotWindow');
+            window.classList.toggle('open');
+        }
+
+        function closeChatbot() {
+            const window = document.getElementById('chatbotWindow');
+            window.classList.remove('open');
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                addMessage(message, 'user');
+                input.value = '';
+                
+                // Simulate AI response
+                setTimeout(() => {
+                    const responses = [
+                        "Thank you for your message! I'd be happy to help you learn more about our AI solutions.",
+                        "That's a great question! Our team can provide you with detailed information about our services.",
+                        "I'll connect you with one of our specialists who can assist you further.",
+                        "Would you like to schedule a consultation to discuss your specific needs?"
+                    ];
+                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                    addMessage(randomResponse, 'bot');
+                }, 1000);
+            }
+        }
+
+        function addMessage(message, sender) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'mb-4';
+            
+            if (sender === 'user') {
+                messageDiv.innerHTML = `
+                    <div class="flex justify-end">
+                        <div class="bg-primary text-primary-foreground p-3 rounded-lg max-w-xs">
+                            <p class="text-sm">${message}</p>
+                        </div>
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="bg-muted p-3 rounded-lg max-w-xs">
+                        <p class="text-sm">${message}</p>
+                    </div>
+                `;
+            }
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function handleChatKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add smooth scrolling behavior
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add animation on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for animation
+            const animateElements = document.querySelectorAll('.card, .text-center > h1, .text-center > h2');
+            animateElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('mobileMenu');
+            const menuButton = event.target.closest('[onclick="toggleMobileMenu()"]');
+            const isClickInsideMenu = menu.contains(event.target);
+            
+            if (!menuButton && !isClickInsideMenu && menu.classList.contains('open')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Close chatbot when clicking outside
+        document.addEventListener('click', function(event) {
+            const chatbot = document.getElementById('chatbot');
+            const chatbotWindow = document.getElementById('chatbotWindow');
+            const chatbotToggle = event.target.closest('.chatbot-toggle');
+            const isClickInsideChatbot = chatbot.contains(event.target);
+            
+            if (!chatbotToggle && !isClickInsideChatbot && chatbotWindow.classList.contains('open')) {
+                closeChatbot();
+            }
+        });
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+<script>
+  lucide.createIcons();
+</script>
+
+    <script src="/scripts/bot.js"></script>
+
+</body>
+</html>

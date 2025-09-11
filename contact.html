@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - ZenziCo</title>
+<link rel="stylesheet" href="/styles/bot.css">
+   <link rel="stylesheet" href="/styles/footer.css">
+   
+   <style>
+        :root {
+            --background: hsl(0 0% 100%);
+            --foreground: hsl(222.2 84% 4.9%);
+            --card: hsl(0 0% 100%);
+            --card-foreground: hsl(222.2 84% 4.9%);
+            --primary: hsl(280 100% 70%);
+            --primary-foreground: hsl(0 0% 100%);
+            --primary-glow: hsl(300 100% 80%);
+            --secondary: hsl(260 50% 50%);
+            --muted: hsl(220 14.3% 95.9%);
+            --muted-foreground: hsl(220 8.9% 46.1%);
+            --accent: hsl(280 100% 95%);
+            --accent-foreground: hsl(280 100% 20%);
+            --border: hsl(214.3 31.8% 91.4%);
+            --input: hsl(214.3 31.8% 91.4%);
+            --radius: 0.5rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+/* Navbar Container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Logo Section */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+}
+
+.logo-text h1 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  color: #e75cf6; /* Purple like your screenshot */
+}
+
+.logo-text h1 span {
+  color: #333; /* Make "Co" darker for contrast */
+}
+
+.logo-text p {
+  margin: 0;
+  font-size: 12px;
+  color: #555;
+  letter-spacing: 1px;
+}
+
+/* Navigation Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: #8b5cf6; /* Highlight purple */
+}
+/* Hamburger (hidden on desktop) */
+.hamburger {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 200px;
+    flex-direction: column;
+    background: #fff;
+    padding: 20px;
+    gap: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: none; /* Hidden by default */
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
+        .hero {
+            padding: 8rem 1rem 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--background) 0%, var(--accent) 50%, var(--background) 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-glow), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--muted-foreground);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-section {
+            padding: 5rem 1rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: 0 10px 30px -10px hsl(280 100% 70% / 0.1);
+        }
+
+        .card h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .card p {
+            color: var(--muted-foreground);
+            margin-bottom: 2rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--input);
+            border-radius: var(--radius);
+            background: var(--background);
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px hsl(280 100% 70% / 0.1);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--primary-foreground);
+        }
+
+        .btn-primary:hover {
+            background: hsl(280 100% 65%);
+            box-shadow: 0 0 20px hsl(280 100% 70% / 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--foreground);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent);
+        }
+
+        .btn-full {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-info-card {
+            background: linear-gradient(135deg, hsl(280 100% 70% / 0.05), hsl(300 100% 80% / 0.05));
+            border-color: hsl(280 100% 70% / 0.2);
+        }
+
+        .contact-info-card h2 {
+            color: var(--primary);
+        }
+
+        .contact-info-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 3rem;
+            height: 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-glow));
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: white;
+        }
+
+        .contact-details h3 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-details p {
+            color: var(--muted-foreground);
+            margin: 0;
+        }
+
+        .business-hours {
+            margin-top: 2rem;
+        }
+
+        .business-hours h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .business-hours h3 svg {
+            color: var(--primary);
+        }
+
+        .hours-list {
+            list-style: none;
+        }
+
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .hours-note {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            background: hsl(280 100% 95% / 0.5);
+            border-radius: var(--radius);
+            font-size: 0.75rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .service-item {
+            padding: 0.75rem;
+            background: hsl(280 100% 95% / 0.3);
+            border-radius: var(--radius);
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .map-section {
+            padding: 5rem 1rem;
+            background: hsl(280 100% 95% / 0.3);
+        }
+
+        .map-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .map-content h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .map-content > p {
+            font-size: 1.25rem;
+            color: var(--muted-foreground);
+            margin-bottom: 3rem;
+        }
+
+        .location-card {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .location-icon {
+            width: 6rem;
+            height: 6rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-glow));
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .location-icon svg {
+            width: 3rem;
+            height: 3rem;
+            color: white;
+        }
+
+        .cta-section {
+            padding: 5rem 1rem;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            font-size: 1.25rem;
+            color: var(--muted-foreground);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }   
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        @media (min-width: 640px) {
+            .cta-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+<div class="navbar">
+  <div class="logo">
+    <img src="images/Z.png" alt="ZenziCo Logo">
+    <div class="logo-text">
+      <h1>Zenzi<span>Co</span></h1>
+      <p>AI POWERED SOLUTIONS</p>
+    </div>
+  </div>
+    <!-- Hamburger Icon -->
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Get In Touch</h1>
+            <p>Ready to transform your business with AI? Let's discuss your project and find the perfect solution.</p>
+        </div>
+    </section>
+
+    <!-- Contact Form & Info -->
+    <section class="contact-section">
+        <div class="contact-grid">
+            <!-- Contact Form -->
+            <div class="card">
+                <h2>Start Your Project</h2>
+                <p>Fill out the form below and we'll get back to you within 24 hours with a detailed proposal.</p>
+                
+                <form>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" placeholder="Your first name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" placeholder="Your last name" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" placeholder="your.email@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="+27 XX XXX XXXX">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" placeholder="Your company name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Service Interest *</label>
+                        <select id="service" required>
+                            <option value="">Select a service</option>
+                            <option value="AI Chatbot Development">AI Chatbot Development</option>
+                            <option value="Website Design">Website Design</option>
+                            <option value="Mobile App Development">Mobile App Development</option>
+                            <option value="Digital Consultation">Digital Consultation</option>
+                            <option value="Maintenance & Support">Maintenance & Support</option>
+                            <option value="Custom Solutions">Custom Solutions</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="budget">Project Budget</label>
+                        <select id="budget">
+                            <option value="">Select budget range</option>
+                            <option value="under-5k">Under R5,000</option>
+                            <option value="5k-15k">R5,000 - R15,000</option>
+                            <option value="15k-30k">R15,000 - R30,000</option>
+                            <option value="30k-plus">R30,000+</option>
+                            <option value="discuss">Let's discuss</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="details">Project Details *</label>
+                        <textarea id="details" rows="5" placeholder="Tell us about your project, goals, timeline, and any specific requirements..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-full">
+                        Send Project Request
+                        <i data-lucide="message-square"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <div class="card contact-info-card">
+                    <h2>Contact Information</h2>
+                    <p>Empowering businesses through innovative AI solutions. Get in touch to see how we can help transform your customer engagement.</p>
+                    
+                    <ul class="contact-info-list">
+                        <li class="contact-info-item">
+                            <div class="contact-icon">
+                                <i data-lucide="phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Phone Numbers</h3>
+                                <p>+27 62 883 6189</p>
+                                <p>+27 65 293 9819</p>
+                                <p>+27 62 595 4493</p>
+                            </div>
+                        </li>
+                        
+                        <li class="contact-info-item">
+                            <div class="contact-icon">
+                                <i data-lucide="mail"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Email</h3>
+                                <p>zenzelecollab@gmail.com</p>
+                            </div>
+                        </li>
+                        
+                        <li class="contact-info-item">
+                            <div class="contact-icon">
+                                <i data-lucide="globe"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Website</h3>
+                                <p>www.ZenziCo.com</p>
+                            </div>
+                        </li>
+                        
+                        <li class="contact-info-item">
+                            <div class="contact-icon">
+                                <i data-lucide="map-pin"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Location</h3>
+                                <p>Cape Town, Western Cape</p>
+                                <p>South Africa</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Business Hours -->
+                <div class="card business-hours">
+                    <h3>
+                        <i data-lucide="clock"></i>
+                        Business Hours
+                    </h3>
+                    <ul class="hours-list">
+                        <li class="hours-item">
+                            <span>Monday - Friday</span>
+                            <span><strong>8:00 AM - 6:00 PM</strong></span>
+                        </li>
+                        <li class="hours-item">
+                            <span>Saturday</span>
+                            <span><strong>9:00 AM - 2:00 PM</strong></span>
+                        </li>
+                        <li class="hours-item">
+                            <span>Sunday</span>
+                            <span><strong>Closed</strong></span>
+                        </li>
+                    </ul>
+                    <div class="hours-note">
+                        💬 Our AI chatbot is available 24/7 for instant support!
+                    </div>
+                </div>
+
+                <!-- Quick Services -->
+                <div class="card">
+                    <h3>Our Services</h3>
+                    <div class="services-grid">
+                        <div class="service-item">AI Chatbot Development</div>
+                        <div class="service-item">Website Design</div>
+                        <div class="service-item">Mobile App Development</div>
+                        <div class="service-item">Digital Consultation</div>
+                        <div class="service-item">Maintenance & Support</div>
+                        <div class="service-item">Custom Solutions</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="map-content">
+            <h2>Visit Our Location</h2>
+            <p>Based in the heart of Cape Town, serving businesses across South Africa</p>
+            
+            <div class="card location-card">
+                <div class="location-icon">
+                    <i data-lucide="map-pin"></i>
+                </div>
+                <h3>Cape Town, Western Cape</h3>
+                <p>Strategically located to serve businesses throughout South Africa with our innovative AI solutions.</p>
+                <br>
+                <p style="font-size: 0.9rem; color: var(--muted-foreground);">
+                    Exact address will be provided upon project confirmation for in-person meetings.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Let's Build Something Great Together!</h2>
+            <p>Whether you need a simple website or a complex AI solution, we're here to help bring your vision to life.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Schedule a Call</a>
+                <a href="#" class="btn btn-outline">View Our Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+
+<!-- Chatbot -->
+<div id="chatbot">
+  <!-- Floating Button -->
+<!-- Floating Button -->
+<button class="chatbot-toggle" onclick="toggleChatbot()">
+  <!-- Lucide icon -->
+  <i data-lucide="message-circle"></i>
+</button>
+
+
+  <!-- Chat Window -->
+  <div class="chatbot-window" id="chatbotWindow">
+    <div class="chatbot-header">
+      <div class="chatbot-title">
+        <span>ZenziCO Assistant</span>
+      </div>
+      <button onclick="closeChatbot()" class="chatbot-close">✖</button>
+    </div>
+
+    <div class="chatbot-body" id="chatMessages">
+      <div class="bot-message">
+        Hello! I'm the ZenziCO AI assistant. How can I help you today?
+      </div>
+    </div>
+
+    <div class="chatbot-footer">
+      <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="handleChatKeyPress(event)">
+      <button onclick="sendMessage()">➤</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Logo & About -->
+    <div class="footer-section">
+      <h2 class="logo"><span>Zenzi</span>Co</h2>
+      <p class="tagline">AI POWERED SOLUTIONS</p>
+      <p>
+        Empowering businesses through innovative AI solutions,
+        custom chatbots, and modern web development.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Services -->
+    <div class="footer-section">
+      <h3>Services</h3>
+      <ul>
+        <li><a href="#">AI Chatbots</a></li>
+        <li><a href="#">Website Development</a></li>
+        <li><a href="#">Mobile Applications</a></li>
+        <li><a href="#">Digital Solutions</a></li>
+      </ul>
+    </div>
+
+    <!-- Get in Touch -->
+    <div class="footer-section">
+      <h3>Get in Touch</h3>
+      <ul>
+       <li>📞 +27 62 595 4493</li>
+       <li>📞 +27 62 883 6189</li>
+       <li>📞 +27 65 293 9819</li>
+        <li>📧 <a href="mailto:zenzelecollab@gmail.com">zenzelecollab@gmail.com</a></li>
+        <li>🌐 <a href="#">www.ZenziCo.com</a></li>
+        <li>📍 Cape Town, Western Cape</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Bottom -->
+  <div class="footer-bottom">
+    <p>© 2024 ZenziCo. All rights reserved. | Empowering businesses through innovative AI solutions.</p>
+  </div>
+</footer>
+
+
+<script>
+function toggleMenu() {
+  document.querySelector('.nav-links').classList.toggle('show');
+}
+</script>
+
+        <script>
+        // Mobile menu functions
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileOverlay');
+            menu.classList.toggle('open');
+            overlay.classList.toggle('open');
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileOverlay');
+            menu.classList.remove('open');
+            overlay.classList.remove('open');
+        }
+
+        // Chatbot functions
+        function toggleChatbot() {
+            const window = document.getElementById('chatbotWindow');
+            window.classList.toggle('open');
+        }
+
+        function closeChatbot() {
+            const window = document.getElementById('chatbotWindow');
+            window.classList.remove('open');
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                addMessage(message, 'user');
+                input.value = '';
+                
+                // Simulate AI response
+                setTimeout(() => {
+                    const responses = [
+                        "Thank you for your message! I'd be happy to help you learn more about our AI solutions.",
+                        "That's a great question! Our team can provide you with detailed information about our services.",
+                        "I'll connect you with one of our specialists who can assist you further.",
+                        "Would you like to schedule a consultation to discuss your specific needs?"
+                    ];
+                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                    addMessage(randomResponse, 'bot');
+                }, 1000);
+            }
+        }
+
+        function addMessage(message, sender) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'mb-4';
+            
+            if (sender === 'user') {
+                messageDiv.innerHTML = `
+                    <div class="flex justify-end">
+                        <div class="bg-primary text-primary-foreground p-3 rounded-lg max-w-xs">
+                            <p class="text-sm">${message}</p>
+                        </div>
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="bg-muted p-3 rounded-lg max-w-xs">
+                        <p class="text-sm">${message}</p>
+                    </div>
+                `;
+            }
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function handleChatKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add smooth scrolling behavior
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add animation on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for animation
+            const animateElements = document.querySelectorAll('.card, .text-center > h1, .text-center > h2');
+            animateElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('mobileMenu');
+            const menuButton = event.target.closest('[onclick="toggleMobileMenu()"]');
+            const isClickInsideMenu = menu.contains(event.target);
+            
+            if (!menuButton && !isClickInsideMenu && menu.classList.contains('open')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Close chatbot when clicking outside
+        document.addEventListener('click', function(event) {
+            const chatbot = document.getElementById('chatbot');
+            const chatbotWindow = document.getElementById('chatbotWindow');
+            const chatbotToggle = event.target.closest('.chatbot-toggle');
+            const isClickInsideChatbot = chatbot.contains(event.target);
+            
+            if (!chatbotToggle && !isClickInsideChatbot && chatbotWindow.classList.contains('open')) {
+                closeChatbot();
+            }
+        });
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+<script>
+  lucide.createIcons();
+</script>
+    <script src="/scripts/bot.js"></script>
+</body>
+</html>

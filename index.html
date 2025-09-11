@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenziCO - AI-Powered Solutions for Modern Businesses</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
+<link rel="stylesheet" href="/styles/bot.css">
+<link rel="stylesheet" href="/styles/footer.css">
+
+<style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --background: 0 0% 100%;
+            --foreground: 222.2 84% 4.9%;
+            --card: 0 0% 100%;
+            --card-foreground: 222.2 84% 4.9%;
+            --primary: 280 100% 70%;
+            --primary-foreground: 0 0% 100%;
+            --primary-glow: 300 100% 80%;
+            --secondary: 260 50% 50%;
+            --secondary-foreground: 0 0% 100%;
+            --muted: 220 14.3% 95.9%;
+            --muted-foreground: 220 8.9% 46.1%;
+            --accent: 280 100% 95%;
+            --accent-foreground: 280 100% 20%;
+            --border: 214.3 31.8% 91.4%;
+            --radius: 0.5rem;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Utility classes */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .text-center { text-align: center; }
+        .flex { display: flex; }
+        .grid { display: grid; }
+        .hidden { display: none; }
+        .block { display: block; }
+        
+        .items-center { align-items: center; }
+        .items-start { align-items: flex-start; }
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        
+        .flex-col { flex-direction: column; }
+        .flex-shrink-0 { flex-shrink: 0; }
+        
+        .space-x-2 > * + * { margin-left: 0.5rem; }
+        .space-x-3 > * + * { margin-left: 0.75rem; }
+        .space-x-4 > * + * { margin-left: 1rem; }
+        .space-x-6 > * + * { margin-left: 1.5rem; }
+        .space-y-3 > * + * { margin-top: 0.75rem; }
+        .space-y-4 > * + * { margin-top: 1rem; }
+        
+        .gap-4 { gap: 1rem; }
+        .gap-6 { gap: 1.5rem; }
+        .gap-8 { gap: 2rem; }
+        .gap-12 { gap: 3rem; }
+        
+        .grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+        .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+        
+        .w-5 { width: 1.25rem; }
+        .w-6 { width: 1.5rem; }
+        .w-12 { width: 3rem; }
+        .h-5 { height: 1.25rem; }
+        .h-6 { height: 1.5rem; }
+        .h-12 { height: 3rem; }
+        
+        .p-4 { padding: 1rem; }
+        .p-6 { padding: 1.5rem; }
+        .p-8 { padding: 2rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+        .px-8 { padding-left: 2rem; padding-right: 2rem; }
+        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+        .py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+        .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+        .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+        .pt-20 { padding-top: 5rem; }
+        .pb-16 { padding-bottom: 4rem; }
+        
+        .m-2 { margin: 0.5rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-3 { margin-bottom: 0.75rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mb-16 { margin-bottom: 4rem; }
+        .ml-2 { margin-left: 0.5rem; }
+        .mt-1 { margin-top: 0.25rem; }
+        .mt-16 { margin-top: 4rem; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        
+        .max-w-2xl { max-width: 42rem; }
+        .max-w-3xl { max-width: 48rem; }
+        .max-w-4xl { max-width: 56rem; }
+        .max-w-7xl { max-width: 80rem; }
+        
+        .text-lg { font-size: 1.125rem; }
+        .text-xl { font-size: 1.25rem; }
+        .text-2xl { font-size: 1.5rem; }
+        .text-3xl { font-size: 1.875rem; }
+        .text-4xl { font-size: 2.25rem; }
+        .text-6xl { font-size: 3.75rem; }
+        
+        .font-bold { font-weight: 700; }
+        .font-semibold { font-weight: 600; }
+        
+        .leading-relaxed { line-height: 1.625; }
+        
+        .text-primary { color: hsl(var(--primary)); }
+        .text-muted-foreground { color: hsl(var(--muted-foreground)); }
+        .text-primary-foreground { color: hsl(var(--primary-foreground)); }
+        
+        .bg-primary { background-color: hsl(var(--primary)); }
+        .bg-card { background-color: hsl(var(--card)); }
+        .bg-muted { background-color: hsl(var(--muted)); }
+        
+        .border { border: 1px solid hsl(var(--border)); }
+        .border-0 { border: none; }
+        .rounded-lg { border-radius: 0.5rem; }
+        
+        .shadow-lg { box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); }
+        
+        .transition-all { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .duration-300 { transition-duration: 300ms; }
+        
+        .hover\:shadow-lg:hover { box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); }
+        .hover\:bg-primary\/90:hover { background-color: hsl(var(--primary) / 0.9); }
+        
+        .fixed { position: fixed; }
+        .top-0 { top: 0; }
+        .left-0 { left: 0; }
+        .right-0 { right: 0; }
+        .z-50 { z-index: 50; }
+        
+        /* Custom gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)), hsl(var(--secondary)));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+        
+        /* Custom gradients */
+        .bg-gradient-hero {
+            background: linear-gradient(135deg, 
+                hsl(var(--background)) 0%, 
+                hsl(var(--accent) / 0.2) 50%, 
+                hsl(var(--background)) 100%);
+        }
+        
+        .bg-gradient-card {
+            background: linear-gradient(145deg, 
+                hsl(var(--card)) 0%, 
+                hsl(var(--accent) / 0.1) 100%);
+        }
+        
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, 
+                hsl(var(--primary)) 0%, 
+                hsl(var(--primary-glow)) 100%);
+        }
+        
+        .bg-gradient-solution {
+            background: linear-gradient(145deg, 
+                hsl(var(--primary) / 0.05) 0%, 
+                hsl(var(--primary-glow) / 0.05) 100%);
+        }
+        
+        .bg-accent-light {
+            background-color: hsl(var(--accent) / 0.3);
+        }
+
+        /* Button styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn-lg {
+            padding: 0.75rem 2rem;
+            font-size: 1.125rem;
+        }
+        
+        .btn-primary {
+            background-color: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+        }
+        
+        .btn-primary:hover {
+            background-color: hsl(var(--primary) / 0.9);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: hsl(var(--foreground));
+            border: 1px solid hsl(var(--border));
+        }
+        
+        .btn-outline:hover {
+            background-color: hsl(var(--muted));
+        }
+
+        /* Card styles */
+        .card {
+            background-color: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+        }
+
+        /* Navbar styles */
+        .navbar {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 15px 40px;
+          background: #fff;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+          font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* Logo Section */
+        .logo {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .logo img {
+          width: 40px;
+          height: 40px;
+        }
+
+        .logo-text h1 {
+          font-size: 20px;
+          font-weight: 700;
+          margin: 0;
+          color: #e75cf6; /* Purple like your screenshot */
+        }
+
+        .logo-text h1 span {
+          color: #333; /* Make "Co" darker for contrast */
+        }
+
+        .logo-text p {
+          margin: 0;
+          font-size: 12px;
+          color: #555;
+          letter-spacing: 1px;
+        }
+
+        /* Navigation Links */
+        .nav-links {
+          list-style: none;
+          display: flex;
+          gap: 30px;
+          margin: 0;
+          padding: 0;
+        }
+
+        .nav-links li a {
+          text-decoration: none;
+          font-size: 16px;
+          font-weight: 500;
+          color: #555;
+          transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+          color: #8b5cf6; /* Highlight purple */
+        }
+
+        /* Hamburger (hidden on desktop) */
+        .hamburger {
+          display: none;
+          font-size: 26px;
+          cursor: pointer;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+          .nav-links {
+            position: absolute;
+            top: 70px;
+            right: 0;
+            width: 200px;
+            flex-direction: column;
+            background: #fff;
+            padding: 20px;
+            gap: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: none; /* Hidden by default */
+          }
+
+          .nav-links.show {
+            display: flex;
+          }
+
+          .hamburger {
+            display: block;
+          }
+        }
+
+        /* Mobile menu styles */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background-color: hsl(var(--background));
+            transition: right 0.3s ease;
+            z-index: 60;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        }
+        
+        .mobile-menu.open {
+            right: 0;
+        }
+        
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 55;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+
+        .chatbot-footer button {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: hsl(var(--primary));
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Responsive design */
+        @media (min-width: 640px) {
+            .sm\:flex-row { flex-direction: row; }
+            .sm\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+        }
+        
+        @media (min-width: 768px) {
+            .md\:text-4xl { font-size: 2.25rem; }
+            .md\:text-6xl { font-size: 3.75rem; }
+            .md\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+            .md\:grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+            .md\:block { display: block; }
+        }
+        
+        @media (min-width: 1024px) {
+            .lg\:px-8 { padding-left: 2rem; padding-right: 2rem; }
+            .lg\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+            .lg\:grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+        }
+        
+        @media (max-width: 767px) {
+            .chatbot-window {
+                width: calc(100% - 2rem);
+                right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+<div class="navbar">
+  <div class="logo">
+    <img src="images/Z.png" alt="ZenziCo Logo">
+    <div class="logo-text">
+      <h1>Zenzi<span>Co</span></h1>
+      <p>AI POWERED SOLUTIONS</p>
+    </div>
+  </div>
+
+  
+  <!-- Hamburger Icon -->
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</div>
+
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="p-6">
+            <div class="flex justify-end mb-6">
+                <button onclick="closeMobileMenu()">
+                    <i data-feather="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <nav class="space-y-4">
+                <a href="index.html" class="block py-2 text-muted-foreground">Home</a>
+                <a href="services.html" class="block py-2 text-muted-foreground">Services</a>
+                <a href="about.html" class="block py-2 text-muted-foreground">About</a>
+                <a href="contact.html" class="block py-2 text-muted-foreground">Contact</a>
+                <a href="#" class="btn btn-primary w-full">Get Started</a>
+            </nav>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="pt-20 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-hero">
+            <div class="container text-center">
+                <div class="max-w-3xl mx-auto">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 gradient-text">
+                        AI-Powered Solutions for Modern Businesses
+                    </h1>
+                    <p class="text-xl text-muted-foreground mb-8 leading-relaxed">
+                        Revolutionize your customer engagement with our custom AI chatbots, modern websites, and mobile applications. 
+                        Empowering South African businesses through innovative technology.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="#" class="btn btn-lg btn-primary">
+                            Get Started Today
+                            <i data-feather="arrow-right" class="ml-2 w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="btn btn-lg btn-outline">
+                            View Our Work
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 max-w-4xl mx-auto">
+                    <div class="text-center">
+                        <div class="text-3xl md:text-4xl font-bold text-primary mb-2">12+</div>
+                        <div class="text-muted-foreground">Happy Clients</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl md:text-4xl font-bold text-primary mb-2">24/7</div>
+                        <div class="text-muted-foreground">Support Available</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl md:text-4xl font-bold text-primary mb-2">99%</div>
+                        <div class="text-muted-foreground">Uptime Guarantee</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl md:text-4xl font-bold text-primary mb-2">3</div>
+                        <div class="text-muted-foreground">Passionate Founders</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+
+        <section class="py-20 px-4 sm:px-6 lg:px-8">
+            <div class="container">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Solutions</h2>
+                    <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+                        We provide comprehensive AI-driven solutions to enhance your business operations and customer experience.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="card p-6 text-center hover:shadow-lg transition-all duration-300 border-0 bg-gradient-card">
+                        <div class="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="bot" class="w-6 h-6 text-primary-foreground"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">AI-Powered Chatbots</h3>
+                        <p class="text-muted-foreground">24/7 customer support with intelligent responses and image attachment capabilities.</p>
+                    </div>
+                    
+                    <div class="card p-6 text-center hover:shadow-lg transition-all duration-300 border-0 bg-gradient-card">
+                        <div class="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center mx-auto mb-4">
+                            <i data-feather="zap" class="w-6 h-6 text-primary-foreground"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Modern Websites</h3>
+                        <p class="text-muted-foreground">Responsive, SEO-optimized websites that convert visitors into customers.</p>
+                    </div>
+                    
+                    <div class="card p-6 text-center hover:shadow-lg transition-all duration-300 border-0 bg-gradient-card">
+                        <div class="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center mx-auto mb-4">
+                            <i data-feather="users" class="w-6 h-6 text-primary-foreground"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Mobile Applications</h3>
+                        <p class="text-muted-foreground">Custom mobile apps designed for your business needs and customer engagement.</p>
+                    </div>
+                    
+                    <div class="card p-6 text-center hover:shadow-lg transition-all duration-300 border-0 bg-gradient-card">
+                        <div class="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center mx-auto mb-4">
+                            <i data-feather="shield" class="w-6 h-6 text-primary-foreground"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Scalable Solutions</h3>
+                        <p class="text-muted-foreground">Tailored services for businesses of all sizes, ensuring affordability and efficiency.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem & Solution Section -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8 bg-accent-light">
+            <div class="container">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6">Solving Real Business Challenges</h2>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <i data-feather="check-circle" class="w-6 h-6 text-primary mt-1 flex-shrink-0"></i>
+                                <div>
+                                    <h4 class="font-semibold">Outdated Information</h4>
+                                    <p class="text-muted-foreground">Many websites contain outdated information leading to customer confusion and lost business.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i data-feather="check-circle" class="w-6 h-6 text-primary mt-1 flex-shrink-0"></i>
+                                <div>
+                                    <h4 class="font-semibold">Limited Support Hours</h4>
+                                    <p class="text-muted-foreground">Traditional customer service has limited hours, leaving customers without support when they need it.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i data-feather="check-circle" class="w-6 h-6 text-primary mt-1 flex-shrink-0"></i>
+                                <div>
+                                    <h4 class="font-semibold">Accessibility Issues</h4>
+                                    <p class="text-muted-foreground">Remote customers often struggle to access support and information they need.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="card p-8 bg-gradient-solution border border-primary/20">
+                            <h3 class="text-2xl font-bold mb-4 text-primary">Our Solution</h3>
+                            <p class="text-muted-foreground mb-6">
+                                ZenziCO delivers comprehensive AI-powered solutions that address these challenges head-on, 
+                                providing your business with modern tools for exceptional customer engagement.
+                            </p>
+                            <ul class="space-y-3">
+                                <li class="flex items-center space-x-2">
+                                    <i data-feather="check-circle" class="w-5 h-5 text-primary"></i>
+                                    <span>24/7 AI chatbot support</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <i data-feather="check-circle" class="w-5 h-5 text-primary"></i>
+                                    <span>Real-time information updates</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <i data-feather="check-circle" class="w-5 h-5 text-primary"></i>
+                                    <span>Accessible from anywhere</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <i data-feather="check-circle" class="w-5 h-5 text-primary"></i>
+                                    <span>Visual support with image attachments</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Business?</h2>
+                <p class="text-xl text-muted-foreground mb-8">
+                    Join the businesses that have already revolutionized their customer engagement with our AI solutions.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#" class="btn btn-lg btn-primary">
+                        Start Your Project
+                        <i data-feather="arrow-right" class="ml-2 w-5 h-5"></i>
+                    </a>
+                    <a href="pricing.html" class="btn btn-lg btn-outline">
+                        View Pricing
+                    </a>
+                </div>
+            </div>
+        </section>
+
+<!-- Chatbot -->
+<div id="chatbot">
+  <!-- Floating Button -->
+<!-- Floating Button -->
+<button class="chatbot-toggle" onclick="toggleChatbot()">
+  <!-- Lucide icon -->
+  <i data-lucide="message-circle"></i>
+</button>
+
+
+  <!-- Chat Window -->
+  <div class="chatbot-window" id="chatbotWindow">
+    <div class="chatbot-header">
+      <div class="chatbot-title">
+        <span>ZenziCO Assistant</span>
+      </div>
+      <button onclick="closeChatbot()" class="chatbot-close">✖</button>
+    </div>
+
+    <div class="chatbot-body" id="chatMessages">
+      <div class="bot-message">
+        Hello! I'm the ZenziCO AI assistant. How can I help you today?
+      </div>
+    </div>
+
+    <div class="chatbot-footer">
+      <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="handleChatKeyPress(event)">
+      <button onclick="sendMessage()">➤</button>
+    </div>
+  </div>
+</div>
+
+    </main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Logo & About -->
+    <div class="footer-section">
+      <h2 class="logo"><span>Zenzi</span>Co</h2>
+      <p class="tagline">AI POWERED SOLUTIONS</p>
+      <p>
+        Empowering businesses through innovative AI solutions,
+        custom chatbots, and modern web development.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Services -->
+    <div class="footer-section">
+      <h3>Services</h3>
+      <ul>
+        <li><a href="#">AI Chatbots</a></li>
+        <li><a href="#">Website Development</a></li>
+        <li><a href="#">Mobile Applications</a></li>
+        <li><a href="#">Digital Solutions</a></li>
+      </ul>
+    </div>
+
+    <!-- Get in Touch -->
+    <div class="footer-section">
+      <h3>Get in Touch</h3>
+      <ul>
+        <li>📞 +27 62 595 4493</li>
+       <li>📞 +27 62 883 6189</li>
+       <li>📞 +27 65 293 9819</li>
+        <li>📧 <a href="mailto:zenzelecollab@gmail.com">zenzelecollab@gmail.com</a></li>
+        <li>🌐 <a href="#">www.ZenziCo.com</a></li>
+        <li>📍 Cape Town, Western Cape</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Bottom -->
+  <div class="footer-bottom">
+    <p>© 2024 ZenziCo. All rights reserved. | Empowering businesses through innovative AI solutions.</p>
+  </div>
+</footer>
+
+<script>
+    // Initialize Feather icons with error handling
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof feather !== 'undefined') {
+            feather.replace();
+        } else {
+            console.warn('Feather icons not loaded, using fallback');
+            // Fallback: replace icons with text
+            document.querySelectorAll('[data-feather]').forEach(function(el) {
+                const iconName = el.getAttribute('data-feather');
+                if (iconName === 'message-circle') {
+                    el.innerHTML = '💬';
+                } else if (iconName === 'arrow-right') {
+                    el.innerHTML = '→';
+                } else if (iconName === 'x') {
+                    el.innerHTML = '✖';
+                } else if (iconName === 'check-circle') {
+                    el.innerHTML = '✓';
+                } else {
+                    el.innerHTML = '●';
+                }
+                el.style.display = 'inline';
+            });
+        }
+    });
+
+    function toggleMenu() {
+      document.querySelector('.nav-links').classList.toggle('show');
+    }
+
+    // Mobile menu functions
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('mobileOverlay');
+        menu.classList.toggle('open');
+        overlay.classList.toggle('open');
+    }
+
+    function closeMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('mobileOverlay');
+        menu.classList.remove('open');
+        overlay.classList.remove('open');
+    }
+
+    // Chatbot functions
+    function toggleChatbot() {
+        const window = document.getElementById('chatbotWindow');
+        window.classList.toggle('open');
+    }
+
+    function closeChatbot() {
+        const window = document.getElementById('chatbotWindow');
+        window.classList.remove('open');
+    }
+
+    function sendMessage() {
+        const input = document.getElementById('chatInput');
+        const message = input.value.trim();
+        
+        if (message) {
+            addMessage(message, 'user');
+            input.value = '';
+            
+            // Simulate AI response
+            setTimeout(() => {
+                const responses = [
+                    "Thank you for your message! I'd be happy to help you learn more about our AI solutions.",
+                    "That's a great question! Our team can provide you with detailed information about our services.",
+                    "I'll connect you with one of our specialists who can assist you further.",
+                    "Would you like to schedule a consultation to discuss your specific needs?"
+                ];
+                const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                addMessage(randomResponse, 'bot');
+            }, 1000);
+        }
+    }
+
+    function addMessage(message, sender) {
+        const messagesContainer = document.getElementById('chatMessages');
+        const messageDiv = document.createElement('div');
+        messageDiv.className = sender === 'user' ? 'user-message' : 'bot-message';
+        messageDiv.innerText = message;
+        
+        messagesContainer.appendChild(messageDiv);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    function handleChatKeyPress(event) {
+        if (event.key === 'Enter') {
+            sendMessage();
+        }
+    }
+
+    // Smooth scrolling for navigation links
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add smooth scrolling behavior
+        const links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        const animateElements = document.querySelectorAll('.card, .text-center > h1, .text-center > h2');
+        animateElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+        const menu = document.getElementById('mobileMenu');
+        const menuButton = event.target.closest('[onclick="toggleMobileMenu()"]');
+        const isClickInsideMenu = menu.contains(event.target);
+        
+        if (!menuButton && !isClickInsideMenu && menu.classList.contains('open')) {
+            closeMobileMenu();
+        }
+    });
+
+    // Close chatbot when clicking outside
+    document.addEventListener('click', function(event) {
+        const chatbot = document.getElementById('chatbot');
+        const chatbotWindow = document.getElementById('chatbotWindow');
+        const chatbotToggle = event.target.closest('.chatbot-toggle');
+        const isClickInsideChatbot = chatbot.contains(event.target);
+        
+        if (!chatbotToggle && !isClickInsideChatbot && chatbotWindow.classList.contains('open')) {
+            closeChatbot();
+        }
+    });
+</script>
+
+    <script>
+
+
+        // Mobile menu functions
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileOverlay');
+            menu.classList.toggle('open');
+            overlay.classList.toggle('open');
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileOverlay');
+            menu.classList.remove('open');
+            overlay.classList.remove('open');
+        }
+
+        // Chatbot functions
+        function toggleChatbot() {
+            const window = document.getElementById('chatbotWindow');
+            window.classList.toggle('open');
+        }
+
+        function closeChatbot() {
+            const window = document.getElementById('chatbotWindow');
+            window.classList.remove('open');
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                addMessage(message, 'user');
+                input.value = '';
+                
+                // Simulate AI response
+                setTimeout(() => {
+                    const responses = [
+                        "Thank you for your message! I'd be happy to help you learn more about our AI solutions.",
+                        "That's a great question! Our team can provide you with detailed information about our services.",
+                        "I'll connect you with one of our specialists who can assist you further.",
+                        "Would you like to schedule a consultation to discuss your specific needs?"
+                    ];
+                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                    addMessage(randomResponse, 'bot');
+                }, 1000);
+            }
+        }
+
+        function addMessage(message, sender) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'mb-4';
+            
+            if (sender === 'user') {
+                messageDiv.innerHTML = `
+                    <div class="flex justify-end">
+                        <div class="bg-primary text-primary-foreground p-3 rounded-lg max-w-xs">
+                            <p class="text-sm">${message}</p>
+                        </div>
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="bg-muted p-3 rounded-lg max-w-xs">
+                        <p class="text-sm">${message}</p>
+                    </div>
+                `;
+            }
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function handleChatKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add smooth scrolling behavior
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add animation on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for animation
+            const animateElements = document.querySelectorAll('.card, .text-center > h1, .text-center > h2');
+            animateElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('mobileMenu');
+            const menuButton = event.target.closest('[onclick="toggleMobileMenu()"]');
+            const isClickInsideMenu = menu.contains(event.target);
+            
+            if (!menuButton && !isClickInsideMenu && menu.classList.contains('open')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Close chatbot when clicking outside
+        document.addEventListener('click', function(event) {
+            const chatbot = document.getElementById('chatbot');
+            const chatbotWindow = document.getElementById('chatbotWindow');
+            const chatbotToggle = event.target.closest('.chatbot-toggle');
+            const isClickInsideChatbot = chatbot.contains(event.target);
+            
+            if (!chatbotToggle && !isClickInsideChatbot && chatbotWindow.classList.contains('open')) {
+                closeChatbot();
+            }
+        });
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+<script>
+  lucide.createIcons();
+</script>
+
+    <script src="/scripts/bot.js"></script>
+
+</body>
+</html>
