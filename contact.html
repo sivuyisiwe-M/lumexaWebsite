@@ -3,24 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - ZenziCo</title>
+    <meta name="google-site-verification" content="eVyZWmqFrjOz5MNVlkE1n2q7jEIzv2rHEz8kTgMMn1E" />
+    <title>Contact - lumexa</title>
 <link rel="stylesheet" href="/styles/bot.css">
    <link rel="stylesheet" href="/styles/footer.css">
    
    <style>
-        :root {
+:root {
             --background: hsl(0 0% 100%);
             --foreground: hsl(222.2 84% 4.9%);
             --card: hsl(0 0% 100%);
             --card-foreground: hsl(222.2 84% 4.9%);
-            --primary: hsl(280 100% 70%);
+            --primary: hsl(217 91% 60%);
             --primary-foreground: hsl(0 0% 100%);
-            --primary-glow: hsl(300 100% 80%);
-            --secondary: hsl(260 50% 50%);
+            --primary-glow: hsl(210 100% 65%);
+            --secondary: hsl(214 84% 56%);
             --muted: hsl(220 14.3% 95.9%);
             --muted-foreground: hsl(220 8.9% 46.1%);
-            --accent: hsl(280 100% 95%);
-            --accent-foreground: hsl(280 100% 20%);
+            --accent: hsl(217 91% 95%);
+            --accent-foreground: hsl(217 91% 20%);
             --border: hsl(214.3 31.8% 91.4%);
             --input: hsl(214.3 31.8% 91.4%);
             --radius: 0.5rem;
@@ -97,7 +98,7 @@
 
 .nav-links li a {
   text-decoration: none;
-  font-size: 16px;
+  font-size: 23px;
   font-weight: 500;
   color: #555;
   transition: color 0.3s ease;
@@ -494,9 +495,9 @@
     <!-- Navigation -->
 <div class="navbar">
   <div class="logo">
-    <img src="images/Z.png" alt="ZenziCo Logo">
+    <!-- <img src="images/Z.png" alt="lumexa Logo"> -->
     <div class="logo-text">
-      <h1>Zenzi<span>Co</span></h1>
+      <h1><span>LUMEXA</span></h1>
       <p>AI POWERED SOLUTIONS</p>
     </div>
   </div>
@@ -528,21 +529,21 @@
                 <h2>Start Your Project</h2>
                 <p>Fill out the form below and we'll get back to you within 24 hours with a detailed proposal.</p>
                 
-                <form>
+                <form  action="https://formspree.io/f/mnngznqk" method="POST">
                     <div class="form-grid">
                         <div class="form-group">
                             <label for="firstName">First Name *</label>
-                            <input type="text" id="firstName" placeholder="Your first name" required>
+                            <input type="text" id="firstName" name="name placeholder="Your first name" required>
                         </div>
                         <div class="form-group">
                             <label for="lastName">Last Name *</label>
-                            <input type="text" id="lastName" placeholder="Your last name" required>
+                            <input type="text" id="lastName" name="lastName" placeholder="Your last name" required>
                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" placeholder="your.email@example.com" required>
+                        <label for="email" name="email">Email Address *</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
                     </div>
                     
                     <div class="form-group">
@@ -552,7 +553,7 @@
                     
                     <div class="form-group">
                         <label for="company">Company Name</label>
-                        <input type="text" id="company" placeholder="Your company name">
+                        <input type="text" name="company" id="company" placeholder="Your company name">
                     </div>
                     
                     <div class="form-group">
@@ -605,8 +606,6 @@
                             </div>
                             <div class="contact-details">
                                 <h3>Phone Numbers</h3>
-                                <p>+27 62 883 6189</p>
-                                <p>+27 65 293 9819</p>
                                 <p>+27 62 595 4493</p>
                             </div>
                         </li>
@@ -617,7 +616,7 @@
                             </div>
                             <div class="contact-details">
                                 <h3>Email</h3>
-                                <p>zenzelecollab@gmail.com</p>
+                                <p>info@lumexa.co.za</p>
                             </div>
                         </li>
                         
@@ -627,7 +626,7 @@
                             </div>
                             <div class="contact-details">
                                 <h3>Website</h3>
-                                <p>www.ZenziCo.com</p>
+                                <p>www.lumexa.co.za</p>
                             </div>
                         </li>
                         
@@ -732,14 +731,14 @@
   <div class="chatbot-window" id="chatbotWindow">
     <div class="chatbot-header">
       <div class="chatbot-title">
-        <span>ZenziCO Assistant</span>
+        <span>lumexa Assistant</span>
       </div>
       <button onclick="closeChatbot()" class="chatbot-close">✖</button>
     </div>
 
     <div class="chatbot-body" id="chatMessages">
       <div class="bot-message">
-        Hello! I'm the ZenziCO AI assistant. How can I help you today?
+        Hello! I'm the lumexa AI assistant. How can I help you today?
       </div>
     </div>
 
@@ -756,7 +755,7 @@
   <div class="footer-container">
     <!-- Logo & About -->
     <div class="footer-section">
-      <h2 class="logo"><span>Zenzi</span>Co</h2>
+      <h2 class="logo"><span></span>LUMEXA</h2>
       <p class="tagline">AI POWERED SOLUTIONS</p>
       <p>
         Empowering businesses through innovative AI solutions,
@@ -791,10 +790,8 @@
       <h3>Get in Touch</h3>
       <ul>
        <li>📞 +27 62 595 4493</li>
-       <li>📞 +27 62 883 6189</li>
-       <li>📞 +27 65 293 9819</li>
-        <li>📧 <a href="mailto:zenzelecollab@gmail.com">zenzelecollab@gmail.com</a></li>
-        <li>🌐 <a href="#">www.ZenziCo.com</a></li>
+        <li>📧 <a href="#">info@lumexa.co.za</a></li>
+        <li>🌐 <a href="#">www.lumexa.co.za</a></li>
         <li>📍 Cape Town, Western Cape</li>
       </ul>
     </div>
@@ -802,7 +799,7 @@
 
   <!-- Bottom -->
   <div class="footer-bottom">
-    <p>© 2024 ZenziCo. All rights reserved. | Empowering businesses through innovative AI solutions.</p>
+    <p>© 2025 lumexa. All rights reserved. | Empowering businesses through innovative AI solutions.</p>
   </div>
 </footer>
 
