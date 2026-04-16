@@ -529,11 +529,12 @@
                 <h2>Start Your Project</h2>
                 <p>Fill out the form below and we'll get back to you within 24 hours with a detailed proposal.</p>
                 
-                <form  action="https://formspree.io/f/mnngznqk" method="POST">
+                <form  action="https://formspree.io/f/mlgajgze" method="POST">
                     <div class="form-grid">
                         <div class="form-group">
                             <label for="firstName">First Name *</label>
-                            <input type="text" id="firstName" name="name placeholder="Your first name" required>
+                            <input type="text" id="firstName" name="name" placeholder="Your first name" required>
+                        
                         </div>
                         <div class="form-group">
                             <label for="lastName">Last Name *</label>
@@ -548,7 +549,7 @@
                     
                     <div class="form-group">
                         <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" placeholder="+27 XX XXX XXXX">
+                        <input type="tel" id="phone" placeholder="+27 XX XXX XXXX" name="phone">
                     </div>
                     
                     <div class="form-group">
@@ -557,8 +558,9 @@
                     </div>
                     
                     <div class="form-group">
+                       
                         <label for="service">Service Interest *</label>
-                        <select id="service" required>
+                        <select id="service" name="service" required >
                             <option value="">Select a service</option>
                             <option value="AI Chatbot Development">AI Chatbot Development</option>
                             <option value="Website Design">Website Design</option>
@@ -571,7 +573,7 @@
                     
                     <div class="form-group">
                         <label for="budget">Project Budget</label>
-                        <select id="budget">
+                        <select id="budget" name="budget">
                             <option value="">Select budget range</option>
                             <option value="under-5k">Under R5,000</option>
                             <option value="5k-15k">R5,000 - R15,000</option>
@@ -583,7 +585,7 @@
                     
                     <div class="form-group">
                         <label for="details">Project Details *</label>
-                        <textarea id="details" rows="5" placeholder="Tell us about your project, goals, timeline, and any specific requirements..." required></textarea>
+                        <textarea id="details" name="details" rows="5" placeholder="Tell us about your project, goals, timeline, and any specific requirements..." required></textarea>
                     </div>
                     
                     <button type="submit" class="btn btn-primary btn-full">
@@ -651,12 +653,16 @@
                     </h3>
                     <ul class="hours-list">
                         <li class="hours-item">
-                            <span>Monday - Friday</span>
-                            <span><strong>8:00 AM - 6:00 PM</strong></span>
+                            <span>Monday - Thursday</span>
+                            <span><strong>7:00 AM - 6:00 PM</strong></span>
                         </li>
                         <li class="hours-item">
-                            <span>Saturday</span>
-                            <span><strong>9:00 AM - 2:00 PM</strong></span>
+                            <span>Fridays</span>
+                            <span><strong>8:00 AM - 4:00 PM</strong></span>
+                        </li>
+                        <li class="hours-item">
+                            <span>Saturday </span>
+                            <span><strong>Closed</strong></span>
                         </li>
                         <li class="hours-item">
                             <span>Sunday</span>
