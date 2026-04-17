@@ -8,6 +8,9 @@
     <title>Pricing - Web Design & Development Services</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.css" rel="stylesheet">
+    <!-- SparkMD5 — required for PayFast signature generation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/spark-md5/3.0.2/spark-md5.min.js"></script>
+
    <link rel="stylesheet" href="/styles/bot.css">
 <link rel="stylesheet" href="/styles/footer.css">
    <style>
@@ -430,6 +433,7 @@
                         <div class="text-4xl font-bold text-primary mb-2">R3,500</div>
                         <p class="text-muted-foreground text-sm mb-4">One-time</p>
                         <p class="text-muted-foreground">Perfect for small businesses getting started online</p>
+                      
                     </div>
 
                     <div class="mb-8">
@@ -462,9 +466,8 @@
                         </ul>
                     </div>
 
-                    <a href="#contact" class="btn btn-outline w-full">
-                        Choose Starter
-                    </a>
+                <button onclick="selectPackage('Starter Package','R3,500','Website Design','One-page responsive website, mobile-friendly design, basic contact form, social media links, basic SEO. 1-week turnaround.',1750)" class="btn btn-outline w-full">Choose Starter</button>
+
                 </div>
 
                 <!-- Standard Business (Popular) -->
@@ -515,9 +518,8 @@
                         </ul>
                     </div>
 
-                    <a href="#contact" class="btn btn-primary w-full">
-                        Choose Standard
-                    </a>
+       <button onclick="selectPackage('Standard Business','R9,500','Website Design','Up to 5 pages, mobile-optimized, SEO-ready, contact form + Google Map, basic CMS, professional design templates.',4750)" class="btn btn-primary w-full">Choose Standard</button>
+
                 </div>
 
                 <!-- Premium Package -->
@@ -567,9 +569,8 @@
                         </ul>
                     </div>
 
-                    <a href="#contact" class="btn btn-outline w-full">
-                        Choose Premium
-                    </a>
+            <button onclick="selectPackage('Premium Package','R18,000','Website Design','Up to 10 custom pages, full e-commerce, 20 products, payment gateway, blog setup, training & documentation. 3–5 week turnaround.',9000)" class="btn btn-outline w-full">Choose Premium</button>
+
                 </div>
             </div>
         </div>
@@ -618,9 +619,8 @@
                         </li>
                     </ul>
 
-                    <a href="#contact" class="btn btn-primary w-full">
-                        Choose Smart Bot
-                    </a>
+            <button onclick="selectPackage('Basic Chatbot','R13,000 + R500/month','AI Chatbot Development','Appointment booking, multi-language support (3 languages), advanced analytics & reporting, training & documentation. 3–4 weeks delivery.',6500)" class="btn btn-primary w-full">Choose Basic Chatbot</button>
+
                 </div>
 
                 <!-- standard Chatbot -->
@@ -668,9 +668,8 @@
                         </li>
                     </ul>
 
-                    <a href="#contact" class="btn btn-outline w-full">
-                        Get Custom Quote
-                    </a>
+            <button onclick="selectPackage('Smart Chatbot','R22,000+','AI Chatbot Development','Advanced NLP, multi-platform deployment, CRM integration, appointment booking, multi-language support, advanced analytics, dedicated support.',0)" class="btn btn-outline w-full">Get Custom Quote</button>
+
                 </div>
 
                 <!-- Enterprise Chatbot -->
@@ -717,9 +716,8 @@
                         </li>
                     </ul>
 
-                    <a href="#contact" class="btn btn-outline w-full">
-                        Get Custom Quote
-                    </a>
+            <button onclick="selectPackage('Enterprise Chatbot','R45,000+','AI Chatbot Development','Custom AI model training, voice & text capabilities, enterprise system integrations, custom dashboard, advanced security, unlimited languages. 6–8 weeks.',0)" class="btn btn-outline w-full">Get Custom Quote</button>
+
                 </div>
             </div>
         </div>
@@ -776,9 +774,8 @@
                         </li> -->
                     </ul>
 
-                    <a href="#contact" class="btn btn-outline w-full">
-                        Choose Basic App
-                    </a>
+            <button onclick="selectPackage('Basic App','R36,000','Mobile App Development','React Native (iOS + Android), up to 5 screens, basic UI/UX design, user authentication, basic database integration, app store submission.',18000)" class="btn btn-outline w-full">Choose Basic App</button>
+
                 </div>
 
                 <!-- Business App -->
@@ -838,9 +835,8 @@
                         </li>
                     </ul>
 
-                    <a href="#contact" class="btn btn-primary w-full">
-                        Choose Business App
-                    </a>
+                <button onclick="selectPackage('Business App','R65,000','Mobile App Development','React Native (iOS + Android), up to 15 screens, custom UI/UX, advanced user management, API integrations, push notifications, payment integration, analytics dashboard. 6–8 weeks.',32500)" class="btn btn-primary w-full">Choose Business App</button>
+
                 </div>
 
                 <!-- Enterprise App -->
@@ -895,10 +891,10 @@
                         </li>
                     </ul>
 
-                    <a href="#contact" class="btn btn-outline w-full">
-                        Get Custom Quote
-                    </a>
-                </div>
+
+                <button onclick="selectPackage('Enterprise App','R92,000+','Mobile App Development','Native iOS & Android, unlimited screens, premium UI/UX, advanced security, real-time data sync, offline functionality, multi-language support, admin dashboard. 10–16 weeks.',0)" class="btn btn-outline w-full">Get Custom Quote</button>
+  
+        </div>
             </div>
         </div>
     </section>
@@ -1178,6 +1174,228 @@
   </div>
 </div>
 
+<!-- Package Selection Modal -->
+<!-- <div id="packageModal" style="
+  display:none; position:fixed; inset:0; z-index:1000;
+  background:rgba(0,0,0,0.5); align-items:center; justify-content:center;
+">
+  <div style="
+    background:#fff; border-radius:16px; padding:2.5rem; max-width:480px;
+    width:90%; box-shadow:0 20px 60px rgba(0,0,0,0.2); position:relative;
+  ">
+    <button onclick="closeModal()" style="
+      position:absolute; top:1rem; right:1rem; background:none;
+      border:none; font-size:1.5rem; cursor:pointer; color:#888;
+    ">✕</button>
+
+    <div style="text-align:center; margin-bottom:1.5rem;">
+      <div style="
+        width:56px; height:56px; border-radius:50%;
+        background:linear-gradient(135deg,hsl(217 91% 60%),hsl(210 100% 65%));
+        display:flex; align-items:center; justify-content:center;
+        margin:0 auto 1rem; font-size:1.5rem;
+      ">✓</div>
+      <h2 style="font-size:1.5rem; font-weight:700; margin-bottom:0.25rem;" id="modalPackageName"></h2>
+      <div style="font-size:2rem; font-weight:800; color:hsl(217 91% 60%);" id="modalPackagePrice"></div>
+    </div>
+
+    <div style="
+      background:hsl(217 91% 95%); border-radius:8px; padding:1rem;
+      margin-bottom:1.5rem; font-size:0.875rem; color:hsl(217 91% 20%);
+      line-height:1.6;
+    " id="modalPackageDetails"></div>
+
+    <div style="
+      background:#f9fafb; border-radius:8px; padding:1rem;
+      margin-bottom:1.5rem; font-size:0.85rem; color:#555;
+    ">
+      <strong>💳 Payment Terms:</strong> 50% deposit to start &bull; 50% on delivery &bull; No hidden fees
+    </div>
+
+    <div style="display:flex; gap:0.75rem;">
+      <button onclick="closeModal()" style="
+        flex:1; padding:0.85rem; border:1px solid hsl(214.3 31.8% 91.4%);
+        border-radius:8px; background:#fff; font-size:1rem; cursor:pointer;
+      ">Back</button>
+      <button onclick="proceedToContact()" style="
+        flex:2; padding:0.85rem;
+        background:linear-gradient(135deg,hsl(217 91% 60%),hsl(210 100% 65%));
+        color:#fff; border:none; border-radius:8px; font-size:1rem;
+        font-weight:600; cursor:pointer;
+      ">Proceed to Book →</button>
+    </div>
+  </div>
+</div> -->
+
+<!-- Package Selection Modal (2-step: confirm → pay) -->
+<div id="packageModal" style="display:none; position:fixed; inset:0; z-index:9999;
+  background:rgba(0,0,0,0.55); align-items:center; justify-content:center; padding:1rem;">
+
+  <!-- ── Step 1: Package Confirmation ── -->
+  <div id="modalStep1" style="background:#fff; border-radius:16px; padding:2rem;
+    max-width:480px; width:100%; position:relative; max-height:90vh; overflow-y:auto;">
+
+    <button onclick="closeModal()" style="position:absolute; top:1rem; right:1rem;
+      background:none; border:none; font-size:1.25rem; cursor:pointer; color:#aaa;">✕</button>
+
+    <div style="text-align:center; margin-bottom:1.5rem;">
+      <div style="width:52px; height:52px; border-radius:50%; background:hsl(217 91% 60%);
+        display:flex; align-items:center; justify-content:center; margin:0 auto 1rem;
+        color:#fff; font-size:1.5rem; font-weight:700;">✓</div>
+      <h2 id="modalPackageName" style="font-size:1.4rem; font-weight:700; margin:0 0 0.25rem;"></h2>
+      <div id="modalPackagePrice" style="font-size:1.75rem; font-weight:800;
+        color:hsl(217 91% 60%);"></div>
+    </div>
+
+    <div id="modalPackageDetails" style="background:hsl(217 91% 95%); border-radius:8px;
+      padding:1rem; margin-bottom:1rem; font-size:0.85rem; color:hsl(217 91% 20%);
+      line-height:1.7;"></div>
+
+    <div id="depositBox" style="background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px;
+      padding:0.875rem 1rem; margin-bottom:1rem; display:flex;
+      justify-content:space-between; align-items:center;">
+      <div>
+        <div style="font-size:0.7rem; color:#0369a1; font-weight:600;
+          text-transform:uppercase; letter-spacing:0.06em;">50% Deposit Today</div>
+        <div id="modalDepositAmount" style="font-size:1.5rem; font-weight:800;
+          color:#0c4a6e;"></div>
+      </div>
+      <div style="text-align:right; font-size:0.75rem; color:#0369a1; line-height:1.4;">
+        <div>Balance paid</div><div>on delivery</div>
+      </div>
+    </div>
+
+    <div style="background:#f8fafc; border-radius:8px; padding:0.75rem 1rem;
+      margin-bottom:1.5rem; font-size:0.8rem; color:#64748b;">
+      💳 <strong>50% deposit</strong> to start · <strong>50%</strong> on delivery · No hidden fees
+    </div>
+
+    <div style="display:flex; gap:0.75rem;">
+      <button onclick="closeModal()" style="flex:1; padding:0.85rem;
+        border:1px solid #e2e8f0; border-radius:8px; background:#fff;
+        font-size:0.95rem; cursor:pointer; color:#555;">Back</button>
+      <button id="modalProceedBtn" style="flex:2; padding:0.85rem;
+        background:hsl(217 91% 60%); color:#fff; border:none; border-radius:8px;
+        font-size:0.95rem; font-weight:600; cursor:pointer;">Pay Deposit via PayFast →</button>
+    </div>
+
+    <div style="text-align:center; margin-top:1rem;">
+      <a onclick="proceedToContact()" style="color:hsl(217 91% 60%); cursor:pointer;
+        font-size:0.85rem; text-decoration:underline;">Prefer to enquire first? →</a>
+    </div>
+  </div>
+
+  <!-- ── Step 2: Customer Details ── -->
+  <div id="modalStep2" style="display:none; background:#fff; border-radius:16px; padding:2rem;
+    max-width:480px; width:100%; position:relative; max-height:90vh; overflow-y:auto;">
+
+    <button onclick="closeModal()" style="position:absolute; top:1rem; right:1rem;
+      background:none; border:none; font-size:1.25rem; cursor:pointer; color:#aaa;">✕</button>
+    <button onclick="goToStep1()" style="display:flex; align-items:center; gap:0.35rem;
+      background:none; border:none; color:#888; font-size:0.85rem; cursor:pointer;
+      margin-bottom:1.5rem; padding:0;">← Back</button>
+
+    <h3 style="font-size:1.2rem; font-weight:700; margin:0 0 0.25rem;">Your Details</h3>
+    <p style="font-size:0.85rem; color:#666; margin:0 0 1.5rem;">
+      Required by PayFast to process your payment securely.</p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin-bottom:0.75rem;">
+      <div>
+        <label style="display:block; font-size:0.8rem; font-weight:500;
+          margin-bottom:0.35rem;">First Name *</label>
+        <input id="pfFirstName" type="text" placeholder="John" style="width:100%;
+          padding:0.65rem 0.85rem; border:1px solid #e2e8f0; border-radius:7px;
+          font-size:0.9rem; box-sizing:border-box;">
+      </div>
+      <div>
+        <label style="display:block; font-size:0.8rem; font-weight:500;
+          margin-bottom:0.35rem;">Last Name *</label>
+        <input id="pfLastName" type="text" placeholder="Smith" style="width:100%;
+          padding:0.65rem 0.85rem; border:1px solid #e2e8f0; border-radius:7px;
+          font-size:0.9rem; box-sizing:border-box;">
+      </div>
+    </div>
+
+    <div style="margin-bottom:1.25rem;">
+      <label style="display:block; font-size:0.8rem; font-weight:500;
+        margin-bottom:0.35rem;">Email Address *</label>
+      <input id="pfEmail" type="email" placeholder="john@example.com" style="width:100%;
+        padding:0.65rem 0.85rem; border:1px solid #e2e8f0; border-radius:7px;
+        font-size:0.9rem; box-sizing:border-box;">
+    </div>
+
+    <div style="background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px;
+      padding:0.875rem 1rem; margin-bottom:1.25rem;">
+      <div style="display:flex; justify-content:space-between; font-size:0.85rem;
+        color:#555; margin-bottom:0.3rem;">
+        <span>Package</span>
+        <span id="step2PackageName" style="font-weight:600;"></span>
+      </div>
+      <div style="display:flex; justify-content:space-between; font-size:0.85rem;
+        color:#555; margin-bottom:0.3rem;">
+        <span>Total price</span>
+        <span id="step2TotalPrice"></span>
+      </div>
+      <div style="display:flex; justify-content:space-between; font-size:1rem;
+        color:#0c4a6e; font-weight:700; border-top:1px solid #bae6fd;
+        padding-top:0.4rem; margin-top:0.4rem;">
+        <span>Deposit due today (50%)</span>
+        <span id="step2DepositDisplay"></span>
+      </div>
+    </div>
+
+    <div id="pfError" style="display:none; background:#fef2f2; border:1px solid #fca5a5;
+      border-radius:8px; padding:0.75rem 1rem; margin-bottom:1rem;
+      font-size:0.85rem; color:#dc2626;"></div>
+
+    <button onclick="submitPayFast()" style="width:100%; padding:1rem;
+      background:hsl(217 91% 60%); color:#fff; border:none; border-radius:8px;
+      font-size:1rem; font-weight:700; cursor:pointer;">
+      🔒 Pay <span id="step2BtnAmount"></span> Securely via PayFast
+    </button>
+    <p style="text-align:center; font-size:0.75rem; color:#aaa; margin:0.75rem 0 0;">
+      You'll be redirected to PayFast's secure checkout page
+    </p>
+  </div>
+</div>
+
+
+<!-- package script -->
+<!-- <script>
+  let _selectedPackage = {};
+
+  function selectPackage(name, price, service, details) {
+    _selectedPackage = { name, price, service, details };
+    document.getElementById('modalPackageName').textContent = name;
+    document.getElementById('modalPackagePrice').textContent = price;
+    document.getElementById('modalPackageDetails').textContent = details;
+    document.getElementById('packageModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('packageModal').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  function proceedToContact() {
+    const params = new URLSearchParams({
+      package: _selectedPackage.name,
+      price:   _selectedPackage.price,
+      service: _selectedPackage.service,
+      details: _selectedPackage.details
+    });
+    window.location.href = 'contact.html?' + params.toString();
+  }
+
+  // Close modal on backdrop click
+  document.getElementById('packageModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+</script>
+ -->
+
+
 <!-- Footer -->
 <footer class="footer">
   <div class="footer-container">
@@ -1327,8 +1545,6 @@
             }
         });
     </script>
-
-   
 
     <script>
 
@@ -1485,6 +1701,148 @@
 </script>
 
     <script src="/scripts/bot.js"></script>
+
+<!-- ============================================================
+  PayFast Integration Script
+  ============================================================ -->
+<script>
+// ─── ① EDIT THESE BEFORE GOING LIVE ────────────────────────────
+const PF = {
+  merchantId:  ' 33861609',       // payfast.co.za → Dashboard
+  merchantKey: 'o49cl8sowv6cp',      // payfast.co.za → Dashboard
+  passphrase:  'Success/Starts/VVith/1dea',        // payfast.co.za → Settings → Passphrase
+  returnUrl:   'https://lumexa.co.za/success.html',
+  cancelUrl:   'https://lumexa.co.za/cancel.html',
+  notifyUrl:   '',                       // Leave blank for static sites
+  sandbox:     false,                     // ← SET TO false WHEN GOING LIVE
+};
+// ───────────────────────────────────────────────────────────────
+
+let _pkg = {};
+
+// Called by each package button — depositAmount=0 means custom/variable pricing
+function selectPackage(name, priceStr, service, details, depositAmount) {
+  _pkg = { name, priceStr, service, details, depositAmount };
+  const isCustom = depositAmount === 0;
+
+  document.getElementById('modalPackageName').textContent   = name;
+  document.getElementById('modalPackagePrice').textContent  = priceStr;
+  document.getElementById('modalPackageDetails').textContent = details;
+
+  const proceedBtn = document.getElementById('modalProceedBtn');
+  if (isCustom) {
+    document.getElementById('depositBox').style.display = 'none';
+    proceedBtn.textContent = 'Request a Quote →';
+    proceedBtn.onclick = proceedToContact;
+  } else {
+    document.getElementById('depositBox').style.display = 'flex';
+    document.getElementById('modalDepositAmount').textContent =
+      'R\u00a0' + depositAmount.toLocaleString('en-ZA');
+    proceedBtn.textContent = 'Pay Deposit via PayFast →';
+    proceedBtn.onclick = goToStep2;
+  }
+
+  document.getElementById('packageModal').style.display = 'flex';
+  document.getElementById('modalStep1').style.display   = 'block';
+  document.getElementById('modalStep2').style.display   = 'none';
+  document.body.style.overflow = 'hidden';
+}
+
+function goToStep2() {
+  const dep = 'R\u00a0' + _pkg.depositAmount.toLocaleString('en-ZA');
+  document.getElementById('step2PackageName').textContent   = _pkg.name;
+  document.getElementById('step2TotalPrice').textContent    = _pkg.priceStr;
+  document.getElementById('step2DepositDisplay').textContent = dep;
+  document.getElementById('step2BtnAmount').textContent     = dep;
+  document.getElementById('pfError').style.display = 'none';
+  document.getElementById('modalStep1').style.display = 'none';
+  document.getElementById('modalStep2').style.display = 'block';
+}
+
+function goToStep1() {
+  document.getElementById('modalStep2').style.display = 'none';
+  document.getElementById('modalStep1').style.display = 'block';
+}
+
+function closeModal() {
+  document.getElementById('packageModal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function proceedToContact() {
+  closeModal();
+  const p = new URLSearchParams({
+    package: _pkg.name, price: _pkg.priceStr,
+    service: _pkg.service, details: _pkg.details
+  });
+  window.location.href = 'contact.html?' + p.toString();
+}
+
+function generatePFSignature(data) {
+  const pfStr = Object.entries(data)
+    .filter(([, v]) => v !== '' && v != null)
+    .map(([k, v]) => `${k}=${encodeURIComponent(String(v).trim()).replace(/%20/g, '+')}`)
+    .join('&');
+  const toHash = PF.passphrase
+    ? pfStr + '&passphrase=' + encodeURIComponent(PF.passphrase.trim()).replace(/%20/g, '+')
+    : pfStr;
+  return SparkMD5.hash(toHash);
+}
+
+function submitPayFast() {
+  const first = document.getElementById('pfFirstName').value.trim();
+  const last  = document.getElementById('pfLastName').value.trim();
+  const email = document.getElementById('pfEmail').value.trim();
+  const errEl = document.getElementById('pfError');
+
+  if (!first || !last || !email) {
+    errEl.textContent = 'Please fill in all required fields.';
+    errEl.style.display = 'block'; return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    errEl.textContent = 'Please enter a valid email address.';
+    errEl.style.display = 'block'; return;
+  }
+  errEl.style.display = 'none';
+
+  const pfUrl = PF.sandbox
+    ? 'https://sandbox.payfast.co.za/eng/process'
+    : 'https://www.payfast.co.za/eng/process';
+
+  const data = {
+    merchant_id:      PF.merchantId,
+    merchant_key:     PF.merchantKey,
+    return_url:       PF.returnUrl,
+    cancel_url:       PF.cancelUrl,
+    ...(PF.notifyUrl ? { notify_url: PF.notifyUrl } : {}),
+    name_first:       first,
+    name_last:        last,
+    email_address:    email,
+    amount:           _pkg.depositAmount.toFixed(2),
+    item_name:        _pkg.name + ' – 50% Deposit',
+    item_description: (_pkg.details || '').substring(0, 255),
+    custom_str1:      _pkg.service,
+  };
+
+  data.signature = generatePFSignature(data);
+
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = pfUrl;
+  Object.entries(data).forEach(([k, v]) => {
+    const inp = document.createElement('input');
+    inp.type = 'hidden'; inp.name = k; inp.value = v;
+    form.appendChild(inp);
+  });
+  document.body.appendChild(form);
+  form.submit();
+}
+
+// Close on backdrop click
+document.getElementById('packageModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+</script>
 
 </body>
 </html>
